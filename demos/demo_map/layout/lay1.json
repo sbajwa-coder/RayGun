@@ -1,0 +1,15 @@
+{ 
+	"background": "background",
+	"sprite": {
+			"grass": {"x":80,
+				     "y":100,
+					"image":"grass",
+					"height":40,
+					"width":40},
+			"tile": {"x":300,
+				     "y":300,
+					"image":"tile0",
+					"height":40,
+					"width":40}
+			}
+}
