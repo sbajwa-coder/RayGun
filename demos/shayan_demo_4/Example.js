@@ -19,11 +19,11 @@ class Example extends Phaser.Scene {
 	create() {
 		// this.warrior = this.matter.add.sprite(100,100,"warrior")
 		//this.image = this.add.image(300, 300, 'warrior');
-		var shapes = this.cache.json.get('shapes');
+		this.shapes = this.cache.json.get('shapes');
 		this.matter.world.setBounds(0, 0, game.config.width, game.config.height);
 		this.add.image(0, 0, 'sheet', 'background').setOrigin(0, 0);
 
-		var ground = this.matter.add.sprite(0, 0, 'sheet', 'ground', {shape: shapes.ground});
+		var ground = this.matter.add.sprite(0, 0, 'sheet', 'ground', {shape: this.shapes.ground});
 		ground.setPosition(0 + ground.centerOfMass.x, 0 + ground.centerOfMass.y);
 		// this.matter.add.sprite(200, 50, 'sheet', 'crate', {shape: shapes.crate});
 		// this.matter.add.sprite(250, 250, 'sheet', 'banana', {shape: shapes.banana});
@@ -41,16 +41,25 @@ class Example extends Phaser.Scene {
 		// 	});
 
 		// player.anims.play('walk');
-		var player = this.matter.add.sprite(100,100, 'sheet', 'crate', {shape: shapes.crate});
-		// player.setScale(2,2);
-		this.anims.create({
-			key: 'walk',
-			frames: this.anims.generateFrameNumbers('mummy', {
-				start: 0, end: 17
-			}),
-			frameRate: 30,
-			repeat: -1
-		});
-		player.anims.play('walk');
+		this.player = this.matter.add.sprite(100,100, 'sheet', 'crate', {shape: this.shapes.crate});
+		// this.player.setScale(2,2);
+		// this.anims.create({
+		// 	key: 'walk',
+		// 	frames: this.anims.generateFrameNumbers('mummy', {
+		// 		start: 0, end: 17
+		// 	}),
+		// 	frameRate: 30,
+		// 	repeat: -1
+		// });
+		// this.player.anims.play('walk');
+
+		this.key_1 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE);
+	}
+
+	update(delta) {
+		if(this.key_1.isDown) {
+			this.player.setBody(this.shapes.banana);
+			this.player.setFrame('banana');
+		}
 	}
 }
