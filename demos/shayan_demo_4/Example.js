@@ -12,8 +12,7 @@ class Example extends Phaser.Scene {
 		,'assets/metalslug_mummy37x45.png', 
 		{ frameWidth: 37, frameHeight: 45});
 
-
-		this.load.multiatlas('cityscene', 'assets2/cityscene.json', "assets2");
+		this.load.multiatlas('yeet', 'assets/fruitsprites.json', "assets");
 	}
 
 	create() {
@@ -25,33 +24,39 @@ class Example extends Phaser.Scene {
 
 		var ground = this.matter.add.sprite(0, 0, 'sheet', 'ground', {shape: this.shapes.ground});
 		ground.setPosition(0 + ground.centerOfMass.x, 0 + ground.centerOfMass.y);
-		// this.matter.add.sprite(200, 50, 'sheet', 'crate', {shape: shapes.crate});
-		// this.matter.add.sprite(250, 250, 'sheet', 'banana', {shape: shapes.banana});
-		// this.matter.add.sprite(360, 50, 'sheet', 'orange', {shape: shapes.orange});
-		// this.matter.add.sprite(400, 250, 'sheet', 'cherries', {shape: shapes.cherries});
 
-		// let player = this.add.sprite(100,100,'mummy');
-		// player.setScale(2,2);
-		// this.anims.create({
-		// 		key: 'walk',
-		// 		frames: this.anims.generateFrameNumbers('mummy', {
-		// 			start:0, end:17}),
-		// 		frameRate: 30,
-		// 		repeat:-1
-		// 	});
+		// Classic mummy spritesheet animation
+		let mum = this.add.sprite(500,500,'mummy');
+		mum.setScale(2,2);
+		let framies =  this.anims.generateFrameNumbers('mummy', {start:0, end:17});
+		this.anims.create({
+				key: 'walk',
+				frames: framies,
+				frameRate: 30,
+				repeat:-1
+			});
+		mum.anims.play('walk');
 
-		// player.anims.play('walk');
+		// matter fruit sprite
 		this.player = this.matter.add.sprite(100,100, 'sheet', 'crate', {shape: this.shapes.crate});
-		// this.player.setScale(2,2);
-		// this.anims.create({
-		// 	key: 'walk',
-		// 	frames: this.anims.generateFrameNumbers('mummy', {
-		// 		start: 0, end: 17
-		// 	}),
-		// 	frameRate: 30,
-		// 	repeat: -1
-		// });
-		// this.player.anims.play('walk');
+
+		// atlas animation
+		var frameNames = this.anims.generateFrameNames('sheet', {frames: ['crate', 'cherries', 'banana']});
+    	this.anims.create({ key: 'loop', frames: frameNames, frameRate: 10, repeat: -1 });
+    	// CLASSIC ANIIMATION disabled
+    	//this.player.anims.play('loop');
+
+
+    	var counter = 0;
+    	var yee = this.player;
+    	frames = [{frame: 'banana', shape: this.shapes.banana}, {frame: 'crate', shape: this.shapes.crate}];
+    	setInterval(function() {
+    		let idx = counter%2;
+    		yee.setFrame(frames[idx].frame);
+    		yee.setPosition(yee.x, yee.y)
+    		yee.setBody(frames[idx].shape);
+    		counter ++;
+    	}, 1000);
 
 		this.key_1 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE);
 	}
@@ -60,6 +65,7 @@ class Example extends Phaser.Scene {
 		if(this.key_1.isDown) {
 			this.player.setBody(this.shapes.banana);
 			this.player.setFrame('banana');
+			this.player.setPosition(this.player.x, this.player.y);
 		}
 	}
 }
