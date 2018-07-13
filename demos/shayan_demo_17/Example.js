@@ -19,6 +19,8 @@ class Example extends Phaser.Scene {
 		this.mum = this.add.sprite(200,200,'mummy');
 		this.mum.setAngle(90);
 		this.mum2 = this.matter.add.sprite(200,200, 'mummy');
+		this.player = this.matter.add.sprite(400,400, 'mummy');
+		this.player.speed = 1.5;
 
 		this.character.add(this.mum);
 		this.character.add(this.mum2);
@@ -41,10 +43,26 @@ class Example extends Phaser.Scene {
 			}
 		});
 
+		this.arrowKeys = this.input.keyboard.createCursorKeys();
 	}
 
 	update(delta) {
-		// console.log(this.mum.x);
-		//this.mum.position.x = this.pointer.x;
+		if (this.arrowKeys.left.isDown){
+			// this.player.anims.play('walk',true);
+			this.player.flipX = true;
+			this.player.x -= this.player.speed;
+		}
+		else if (this.arrowKeys.right.isDown){
+			// this.player.anims.play('walk',true);
+			this.player.flipX = false;
+			this.player.x += this.player.speed;
+		}
+
+		if (this.arrowKeys.up.isDown){
+			this.player.y -= this.player.speed;
+		}
+		if (this.arrowKeys.down.isDown){
+			this.player.y += this.player.speed;
+		}
 	}
 }
