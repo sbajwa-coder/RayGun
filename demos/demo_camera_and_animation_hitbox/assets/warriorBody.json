@@ -1,0 +1,41 @@
+{
+	"textures": [
+		{
+			"image": "warriorBody.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 85,
+				"h": 64
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "warrior.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 108,
+						"h": 113
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 35,
+						"w": 83,
+						"h": 62
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 83,
+						"h": 62
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:6f9520b21f20031cb5d9a9e3576dbe24:812c9abb77d1c63e91a374fdbaac5036:005f9458514efa7800c5e6b84ab2ec4a$"
+	}
+}
