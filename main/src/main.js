@@ -1,3 +1,6 @@
 import 'phaser';
+import BootScene from './scenes/BootScene';
 
-console.log(Phaser.Math.DEG_TO_RAD);
+const config = {
+	
+}
