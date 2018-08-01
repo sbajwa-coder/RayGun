@@ -33,11 +33,11 @@ io.on('connection', function(socket){
 	});
 
 	socket.on('playerMovement',function(moveData){
-		players[socket.id].x = moveData.x;
+		/*players[socket.id].x = moveData.x;
 		players[socket.id].y = moveData.y;
-		players[socket.id].angle = moveData.angle;
+		players[socket.id].angle = moveData.angle;*/
 
-		socket.broadcast.emit('playerMoved', players[socket.id]);
+		socket.broadcast.emit('playerMoved', {'id':socket.id,'direction':moveData});
 	});
 
 

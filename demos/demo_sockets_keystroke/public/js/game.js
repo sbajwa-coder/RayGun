@@ -64,11 +64,29 @@ function create(){
 
 	this.socket.on('playerMoved', function(playerInfo){
 		self.otherPlayers.getChildren().forEach(function(otherPlayer){
-		//	if (otherPlayer.x!==playerInfo.x || otherPlayer.y!==playerInfo.y || otherPlayer.angle !== playerInfo.angle){
-				otherPlayer.setPosition(playerInfo.x,playerInfo.y);
+			let opposite = Math.sin(otherPlayer.rotation) * self.player.speed;	
+		let adjacent = Math.cos(otherPlayer.rotation) * self.player.speed;
+
+			if (playerInfo.direction === 'left'){
+				otherPlayer.angle -= 3;
+			}
+
+			else if (playerInfo.direction === 'right'){
+				otherPlayer.angle += 3;
+			}
+
+			if (playerInfo.direction === 'up'){
+				otherPlayer.x -= opposite;
+				otherPlayer.y += adjacent;
+			}
+			if (playerInfo.direction === 'down'){
+				otherPlayer.x += opposite*0.5;
+				otherPlayer.y -= adjacent*0.5;
+			}
+			otherPlayer.play(self.player.run.key,true);
+				/*otherPlayer.setPosition(playerInfo.x,playerInfo.y);
 				otherPlayer.setAngle(playerInfo.angle);
-				otherPlayer.play(self.player.run.key,true);
-		//	}
+				otherPlayer.play(self.player.run.key,true);*/
 		});
 	});
 
@@ -94,22 +112,26 @@ function update(){
 		if (this.arrowKeys.left.isDown){
 			this.moving = true;
 			this.player.angle -= 3;
+			this.socket.emit('playerMovement', "left");
 		}
 
 		else if (this.arrowKeys.right.isDown){
 			this.moving = true;
 			this.player.angle += 3;
+			this.socket.emit('playerMovement', "right");
 		}
 
 		if (this.arrowKeys.up.isDown){
 			this.moving = true;
 			this.player.x -= opposite;
 			this.player.y += adjacent;
+			this.socket.emit('playerMovement', "up");
 		}
 		if (this.arrowKeys.down.isDown){
 			this.moving = true;
 			this.player.x += opposite*0.5;
 			this.player.y -= adjacent*0.5;
+			this.socket.emit('playerMovement', "down");
 		}
 
 		if (this.moving) {
@@ -118,9 +140,10 @@ function update(){
 		} else {
 			this.player.anims.stop();
 			this.player.setFrame('tile000.png');
+			this.socket.emit('playerStopped');
 		}
 
-
+/*
 		var x = this.player.x;
 		var y = this.player.y;
 		var angle = this.player.angle;
@@ -128,8 +151,6 @@ function update(){
 		if (this.player.oldPos && 
 			(x!==this.player.oldPos.x || y!==this.player.oldPos.y || angle!==this.player.oldPos.angle)){
 			this.socket.emit('playerMovement', {x,y,angle});
-		}else{
-			this.socket.emit('playerStopped')
 		}
 
 
@@ -137,7 +158,7 @@ function update(){
 			x: this.player.x,
 			y: this.player.y,
 			angle: this.player.angle
-		};
+		};*/
 	}
 }
 
