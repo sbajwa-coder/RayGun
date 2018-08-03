@@ -1,0 +1,14 @@
+body {
+	background-color: black;
+}
+
+.main-container {
+	background-color: black;
+	background-image: url('../images/shockfort-bg.png');
+	width: 800px;
+	height: 600px;
+	margin: 0 auto;
+	background-position: center;
+	background-size: 800px;
+	background-repeat: no-repeat;
+}
