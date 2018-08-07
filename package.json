@@ -4,16 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode=development",
-    "dev2": "webpack-dev-server --watch --mode=development",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start_old": "node dist/server.js",
-    "build_old": "webpack --config ./webpack.config.js",
-    "serve": "node build/bundle.js",
-    "build": "webpack",
-    "start2": "npm run build && webpack-dev-server --port=8000",
-    "server": "npm run dev && npm run serve",
-    "start": "webpack-dev-server --mode=development --content-base src/"
+    "server": "node build/bundle.js",
+    "build": "webpack --mode=development",
+    "produce": "webpack -p --mode=production",
+    "start": "npm run --silent build && npm run --silent server"
   },
   "author": "Julius & Shayan",
   "license": "ISC",
