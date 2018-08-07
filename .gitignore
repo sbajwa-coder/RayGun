@@ -218,3 +218,6 @@ pip-log.txt
 
 #Node Modules
 node_modules/
+
+#Build folder
+build/
