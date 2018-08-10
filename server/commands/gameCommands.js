@@ -1,31 +1,15 @@
 class Game{
-	gameStart(){
-		console.log('gameStart');
+	static start(){
+		console.log('not implementated');
+	}
+	
+	static close(){
+		console.log('not implementated');
 	}
 
+	static end(){
+		console.log('not implementated');
+	}
 }
-	function gameClose(){
-
-	}
-
-	function gameEnd(){
-
-	}
-
-	function gameSpawn(){
-
-	}
-
-	function gameDestroy(){
-
-	}
-
-	function gameMove(){
-
-	}
-
-	function gameAttack(){
-
-	}
 
 export default Game;

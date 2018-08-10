@@ -1,7 +1,6 @@
 // import 'phaser';
 // import BootScene from './scenes/BootScene';
-let gameScene = new Phaser.Scene('game');
-const config = {
+var config = {
 	type: Phaser.AUTO,
 	height:600,
 	width:800,
@@ -18,10 +17,7 @@ const config = {
 			}
 		}
 	},
-	scene: gameScene
+	scene: [GameLobbyScene]
 };
 
 const game = new Phaser.Game(config);
-
-function preload(){
-console.log('hi');}
