@@ -3,12 +3,83 @@ body {
 }
 
 .main-container {
-	background-color: black;
-	background-image: url('../images/shockfort-bg.png');
+	background-image: url('../assets/UI/shockfort-bg.png');
 	width: 800px;
 	height: 600px;
 	margin: 0 auto;
 	background-position: center;
 	background-size: 800px;
 	background-repeat: no-repeat;
+	border: 5px solid white;
 }
+
+.page-size {
+	width: 800px;
+	height: 600px;
+}
+
+.shockfort-logo {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10%;
+    margin-bottom: 8%;
+    width: 45%;
+}
+
+.top-bar img {
+	width: 15%;
+	margin: 2% 2% 0 2%;
+}
+
+.login-button {
+	float: left;
+}
+
+.sign-up-button {
+	float: right;
+}
+
+.center-buttons img {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5%;
+}
+
+.play-button {
+	width: 26.5%;
+}
+
+.quick-play-button {
+	width: 20.75%;
+}
+
+.how-to-play-button {
+	width: 22.75%;
+}
+
+.center-buttons {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.music-on-icon , .sound-on-icon {
+	width: 4%;
+	margin-left: 4%;
+	margin-top: 0%;
+}
+
+.shop-button {
+	margin-top: 0%;
+	width: 13%;
+	float: right;
+	margin-right: 2%;
+}
+
+.splash-screen {
+
+}
+
+

@@ -2,17 +2,16 @@ var config = {
 	type:Phaser.AUTO,
 	width:800,
 	height:600,
-	'phaser-example',
-	//backgroundColor:'#ffffff',
-	transparent:true,
-	physics: {
-		default: 'matter',
-		matter: {
-			gravity: {y : 0, x: 0},
-			debug: true
-		}
-	},
-	scene: [Example]
+	parent: 'shockfort-game',
+	transparent: true,
+	// physics: {
+	// 	default: 'matter',
+	// 	matter: {
+	// 		gravity: {y : 0, x: 0},
+	// 		debug: true
+	// 	}
+	// },
+	scene: [Title, Lobby]
 };
 
 var game = new Phaser.Game(config);
