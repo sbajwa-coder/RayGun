@@ -64,10 +64,10 @@ class GameLobbyScene extends Phaser.Scene{
 
 			    case 'move':
 	    			self.players.getChildren().forEach(function(player){
-	    			
-	    				/*fix issues id in player.playerId is a string*/
+	    				//fix issues id in player.playerId is a string
+	    				//maybe make this faster by breaking?
 						if (data.playerID == player.id){
-			                 self.movement(player,data);
+			                 self.movement(player, data);
 			            }
 			        });
 	    			break;
@@ -81,12 +81,30 @@ class GameLobbyScene extends Phaser.Scene{
 	    /*Send a message to server when restarting or leaving the page*/
 	    window.onbeforeunload = function(){
 	    	self.ws.send(JSON.stringify({type:"leave", playerID: self.id, gameID: 1}));
+	    	console.log('nbefore');
 	    }
 
 	    /*Close websocket connection when restarting or leaving the page*/
 	    window.onunload = function () { 
+	    	console.log('nafter');
 	    	self.ws.close();
    		}
+
+   		window.onload = function(){
+   			console.log('nload');
+   		}
+
+   		window.onfocus = function(){
+   			//console.log('focused');
+   		}
+
+   		// window.onpagehide = function(){
+   		// 	console.log('hidden');
+   		// }
+   		document.addEventListener("visibilitychange", function(){
+   			if (document.hidden){console.log('hide');}
+   			else{console.log('not hide');}
+   		});
 
    		/*********************************************** PHASER FUNCTIONS ************************************************/
 	    this.arrows = this.input.keyboard.createCursorKeys();	
@@ -109,15 +127,21 @@ class GameLobbyScene extends Phaser.Scene{
 
 	addPlayers(player){
 		//add beggining angle here
-		let newPlayer = this.matter.add.sprite(player.x, player.y, 
-			'warrior', 'tile000.png'); //fixed atm
+		//maybe use the player object better here or reduce the amount of information
+		let newPlayer = this.matter.add.sprite(player.character.x, player.character.y, 
+			player.character.model, player.character.startImage, /*{angle:player.character.angle, rotation:player.character.rotation}*/); //fixed atm
+		newPlayer.angle = player.character.angle;
+		newPlayer.rotation = player.character.rotation;
+
+		/*beware of id name inconsistency*/
 	    newPlayer.username = player.username;
-	    newPlayer.id = player.id;
+	    newPlayer.id = player.inGameID; 
 
 	    this.players.add(newPlayer);
 	}
 
 	movement(player, data){
+		//console.log(Date.now());
 		let opposite = Math.sin(player.rotation) * 3; 
 		let adjacent = Math.cos(player.rotation) * 3;
 	
@@ -147,6 +171,7 @@ class GameLobbyScene extends Phaser.Scene{
 			default:
 				break;
 		}
+		this.ws.send(JSON.stringify({type:'umove', x:player.x,y:player.y,angle:player.angle, playerID:player.id,gameID: 1,rotation:player.rotation}));
 
 		// player.setPosition(x,y);
 		// player.setAngle(angle);
