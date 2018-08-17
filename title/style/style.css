@@ -18,68 +18,261 @@ body {
 	height: 600px;
 }
 
+.splash-screen {
+	position: relative;
+}
+
 .shockfort-logo {
 	display: block;
     margin-left: auto;
     margin-right: auto;
     padding-top: 10%;
-    margin-bottom: 8%;
+    margin-bottom: 6%;
     width: 45%;
 }
 
-.top-bar img {
-	width: 15%;
-	margin: 2% 2% 0 2%;
+.button {
+	position: absolute;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 90%;
+}
+
+.login-button, .sign-up-button {
+	width:17%;
+	height: 10%;
+	top: 1.5%;
 }
 
 .login-button {
-	float: left;
+	left: 1%;
+	background-image: url("../assets/UI/login-button.png");
 }
 
 .sign-up-button {
-	float: right;
+	right: 1%;
+	background-image: url("../assets/UI/sign-up-button.png");
 }
 
-.center-buttons img {
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2.5%;
-}
-
-.play-button {
-	width: 26.5%;
-}
-
-.quick-play-button {
-	width: 20.75%;
-}
-
-.how-to-play-button {
-	width: 22.75%;
+.button:hover {
+	background-size: 97%;
+	cursor: pointer;
 }
 
 .center-buttons {
+	position: relative;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	/*background-color: orange;*/
+	height: 60%;
 }
 
-.music-on-icon , .sound-on-icon {
-	width: 4%;
-	margin-left: 4%;
-	margin-top: 0%;
+.button-container {
+	position: relative;
+	margin: 0 auto;
+}
+
+.play-button {
+	width: 30%;
+	height: 35%;
+}
+
+.quick-play-button {
+	width: 24%;
+	height: 23%;
+}
+
+.how-to-play-button {
+	width: 26%;
+	height: 23%;
+}
+
+.button-image {
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+}
+
+.button-image:hover {
+	width: 97%;
+	cursor: pointer;
+	transform: translate(0%, -3%);
+}
+
+.icon {
+	position: absolute;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 85%;
+	width: 5%;
+	padding-top: 5%;
+}
+
+.icon:hover {
+	cursor: pointer;
+	width: 6%;
+	padding-top: 6%;
+}
+
+.music-on-icon {
+	background-image: url("../assets/UI/music-on-icon.png");
+	bottom: 4%;
+	left: 4%;
+}
+
+.music-on-icon:hover {
+	bottom: 3.5%;
+	left: 3.5%;
+}
+
+.sound-on-icon {
+	background-image: url("../assets/UI/sound-on-icon.png");
+	bottom: 4%;
+	left: 13%;
+}
+
+.sound-on-icon:hover {
+	bottom: 3.5%;
+	left: 12.5%;
 }
 
 .shop-button {
-	margin-top: 0%;
-	width: 13%;
-	float: right;
-	margin-right: 2%;
+	background-image: url("../assets/UI/shop-button-disabled.png");
+	background-position: center;
+	background-size: 95%;
+	bottom: 2%;
+	right: 2%;
+	width: 14%;
+	padding-top: 7.5%;
 }
 
-.splash-screen {
-
+.shop-button:hover {
+	cursor: default;
 }
 
+/*
+--------------------------------------------------------------
+Login Modal
+--------------------------------------------------------------
+*/
 
+.modal-screen {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: black;
+	opacity: 0.5;
+	z-index: 10;
+}
+
+@font-face {
+    font-family: comicScript;
+    src: url("../fonts/sf-comic-script/SFComicScript.ttf");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: comicScript;
+    src: url("../fonts/sf-comic-script/SFComicScript-Bold.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+	font-family: vcr;
+	src: url("../fonts/vcr-osd/vcr-osd.ttf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: pixellari;
+	src: url("../fonts/pixellari/Pixellari.ttf");
+	font-weight: normal;
+}
+
+.modal {
+	position: absolute;
+	top: 50px;
+	font-family: comicScript;
+	letter-spacing: -0.07em;
+	font-weight: normal;
+	background-color: rgba(255,255,255,0.9);
+	border: 0.25em solid black;
+	border-radius: 1em;
+	width: 38%;
+	height: 55%;
+	left: 31%;
+	right: 31%;
+	text-align: center;
+	z-index: 15;
+}
+
+.modal > h1 {
+	font-size: 2.7em;
+	margin: 0.6em 0 0.5em 0;
+}
+
+.modal > form > input {
+	position: relative;
+	border: 1px solid #666;
+	background-color: white;
+	color: black;
+	padding: 16px;
+	border-radius: 5px;
+	font-family: "pixellari";
+	font-size: 14px;
+	line-height: 14px;
+	vertical-align: bottom;
+	font-weight: normal;
+	width: 68%;
+	margin-bottom: 6%;
+}
+
+.modal > form > input::placeholder {
+	color: #333;
+}
+
+.login-modal-button {
+	width: 42%;
+	position: absolute;
+	bottom: 30px;
+	left: 29%;
+	right: 29%;
+}
+
+.login-modal {
+	display: none;
+}
+
+.login-modal > .button-image:hover {
+	transform: translate(0%, 1%);
+}
+
+.sign-up-modal {
+	height: 76%;
+	display: block;
+}
+
+.register-modal-button {
+	width: 42%;
+	position: absolute;
+	bottom: 30px;
+	left: 29%;
+	right: 29%;
+}
+
+.register-modal-button > .button-image:hover {
+	transform: translate(0%, 2%);
+}
+
+/*
+--------------------------------------------------------------
+Sign Up Modal
+--------------------------------------------------------------
+*/

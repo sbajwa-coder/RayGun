@@ -1,18 +1,66 @@
 <div class="splash-screen page-size">
+	<div class="modal-screen"></div>
 	<div class="top-bar">
-		<img src="../assets/UI/login-button.png" alt="login" class="login-button">
-		<img src="../assets/UI/sign-up-button.png" alt="register" class="sign-up-button">
+		<div class="login-button button"></div>
+		<!-- <img src="../assets/UI/login-button.png" alt="login" class="login-button"> -->
+		<div class="sign-up-button button"></div>
+		<!-- <img src="../assets/UI/sign-up-button.png" alt="register" class="sign-up-button"> -->
 	</div>
 
 	<img src="../assets/UI/shockfort-logo.png" alt="shockfort" class="shockfort-logo">
 
 	<div class="center-buttons">
-		<img src="../assets/UI/play-button.png" alt="play" class="play-button">
+		<!-- <img src="../assets/UI/play-button.png" alt="play" class="play-button">
 		<img src="../assets/UI/quick-play-button.png" alt="play as guest" class="quick-play-button">
-		<img src="../assets/UI/how-to-play-button.png" alt="how to play" class="how-to-play-button">
+		<img src="../assets/UI/how-to-play-button.png" alt="how to play" class="how-to-play-button"> -->
+		<!-- <div class="play-button button"></div> -->
+		<div class="button-container play-button">
+			<img src="../assets/UI/play-button.png" alt="play" class="button-image"></div>
+
+		<div class="button-container quick-play-button">
+			<img src="../assets/UI/quick-play-button.png" alt="play" class="button-image"></div>
+
+		<div class="button-container how-to-play-button">
+			<img src="../assets/UI/how-to-play-button.png" alt="play" class="button-image"></div>		
 	</div>
 	
-	<img src="../assets/UI/music-on-icon.png" alt="turn music off" class="music-on-icon">
+	<!-- <img src="../assets/UI/music-on-icon.png" alt="turn music off" class="music-on-icon">
 	<img src="../assets/UI/sound-on-icon.png" alt="turn sound off" class="sound-on-icon">
-	<img src="../assets/UI/shop-button.png" alt="" class="shop-button">
+	<img src="../assets/UI/shop-button-disabled.png" alt="" class="shop-button-disabled"> -->
+	<div class="music-on-icon icon"></div>
+	<div class="sound-on-icon icon"></div>
+	<div class="shop-button button"></div>
+
+	<div class="modal login-modal">
+		<h1 class="modal-heading">Login</h1>
+
+		<form action="" class="login-modal">
+			<input type="text" name="login-username" placeholder="username / email" autocomplete="off">
+			<br>
+			<input type="password" name="login-password" placeholder="password" autocomplete="off">
+			<br>
+			<div class="button-container login-modal-button">
+				<img src="../assets/UI/play-button.png" alt="play" class="button-image">
+			</div>
+		</form>
+	</div>
+
+	<div class="modal sign-up-modal">
+		<h1 class="modal-heading">Sign Up</h1>
+
+		<form action="" class="sign-up-form">
+			<input type="text" name="register-username" placeholder="username" autocomplete="off">
+			<br>
+			<input type="email" name="register-email" placeholder="email" autocomplete="off">
+			<br>
+			<input type="password" name="register-password" placeholder="password" autocomplete="off">
+			<br>
+			<input type="confirm password" name="regitser-confirm" placeholder="confirm password"
+				autocomplete="off">
+			<br>
+			<div class="button-container register-modal-button">
+				<img src="../assets/UI/play-button.png" alt="sign up" class="button-image">
+			</div>
+		</form>
+	</div>
 </div>
