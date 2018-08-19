@@ -32,6 +32,12 @@ const gameLobbyServer = {
           gameLobbyServer.uMove(data);
           break;
 
+        case 't':
+          //need to update server x y and angle
+          gameLobbyServer.uMove(data);
+          gameLobbyServer.broadcastToGame(data.gameID, data);
+          break;
+
         default:
           break;
       }

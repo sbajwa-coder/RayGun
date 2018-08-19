@@ -13,7 +13,8 @@ var config = {
 				height: 600
 			},
 			gravity: {
-				y:0
+				y:1,
+				x:1
 			}
 		}
 	},

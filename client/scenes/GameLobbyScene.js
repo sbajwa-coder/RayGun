@@ -20,6 +20,8 @@ class GameLobbyScene extends Phaser.Scene{
 		this.players = this.add.group();
 		var self = this;
 
+		//temp
+		this.oldPos ={x:0,y:0,angle:0,rotation:0};
 		this.temp;
 		/********************************************** WEBSOCKET FUNCTIONS **********************************************/
 		this.ws.onopen = function(){
@@ -72,10 +74,24 @@ class GameLobbyScene extends Phaser.Scene{
 			        });
 	    			break;
 
+	    		/*case 't':
+	    			self.players.getChildren().forEach(function(player){
+	    				//fix issues id in player.playerId is a string
+	    				//maybe make this faster by breaking?
+						if (data.playerID == player.id){
+			                 player.x = data.x;
+			                 player.y = data.y;
+			                 player.angle = data.angle;
+			            }
+			        });
+	    			break;*/
+
 	    		default:
 	    			break;
 	    	}
 	    }
+
+	    console.log(this.players.getChildren());
 
 	    /*********************************************** WINDOWS FUNCTIONS ***********************************************/
 	    /*Send a message to server when restarting or leaving the page*/
@@ -93,18 +109,18 @@ class GameLobbyScene extends Phaser.Scene{
    		window.onload = function(){
    			console.log('nload');
    		}
-
+/*
    		window.onfocus = function(){
    			//console.log('focused');
-   		}
+   		}*/
 
    		// window.onpagehide = function(){
    		// 	console.log('hidden');
    		// }
-   		document.addEventListener("visibilitychange", function(){
+   		/*document.addEventListener("visibilitychange", function(){
    			if (document.hidden){console.log('hide');}
    			else{console.log('not hide');}
-   		});
+   		});*/
 
    		/*********************************************** PHASER FUNCTIONS ************************************************/
 	    this.arrows = this.input.keyboard.createCursorKeys();	
@@ -122,7 +138,19 @@ class GameLobbyScene extends Phaser.Scene{
 		}
 		else if (this.arrows.down.isDown){
 			this.ws.send(JSON.stringify({type:'move',action:'ArrowDown', playerID:this.id, gameID:1}));
-		}
+		}else{
+		var self = this;
+		this.players.getChildren().forEach(function(player){
+
+			if (self.id == player.id){
+	            if (self.oldPos && 
+					(player.x!==self.oldPos.x || player.y!==self.oldPos.y || player.angle!==self.oldPos.angle || player.rotation!==self.oldPos.rotation)){
+	            //	console.log(1);
+	            	self.oldPos ={x:player.x,y:player.y,angle:player.angle,rotation:player.rotation};
+	            	self.ws.send(JSON.stringify({type:'t', playerID:self.id, gameID:1, x:player.x, y:player.y, angle:player.angle, rotation:player.rotation}));
+	        	}
+	    	}
+	    });}
 	}
 
 	addPlayers(player){
@@ -136,7 +164,7 @@ class GameLobbyScene extends Phaser.Scene{
 		/*beware of id name inconsistency*/
 	    newPlayer.username = player.username;
 	    newPlayer.id = player.inGameID; 
-
+	    console.log(newPlayer);
 	    this.players.add(newPlayer);
 	}
 
@@ -170,6 +198,12 @@ class GameLobbyScene extends Phaser.Scene{
 
 			default:
 				break;
+		}
+		this.oldPos = {
+			x:player.x,
+			y:player.y,
+			angle:player.angle,
+			rotation:player.rotation
 		}
 		this.ws.send(JSON.stringify({type:'umove', x:player.x,y:player.y,angle:player.angle, playerID:player.id,gameID: 1,rotation:player.rotation}));
 
