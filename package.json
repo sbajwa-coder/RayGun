@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "parcel": "node node_modules/parcel-bundler/bin/cli.js",
+    "build-parcel": "npm run parcel build client/index.html --public-url ./",
+    "web-parcel": "npm run parcel client/index.html --public-url ./",
+    "client": "webpack --config webpack.browser.config.js",
     "server": "node build/bundle.js",
     "build": "webpack --mode=development",
     "produce": "webpack -p --mode=production",
@@ -12,6 +16,7 @@
   "author": "Julius & Shayan",
   "license": "ISC",
   "dependencies": {
+    "parcel-bundler": "^1.9.7",
     "phaser": "^3.11.0",
     "ws": "*"
   },

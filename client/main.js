@@ -1,5 +1,7 @@
-// import 'phaser';
+//import Phaser from 'phaser';
 // import BootScene from './scenes/BootScene';
+import GameLobbyScene from './scenes/GameLobbyScene';
+
 var config = {
 	type: Phaser.AUTO,
 	height:600,
@@ -13,8 +15,7 @@ var config = {
 				height: 600
 			},
 			gravity: {
-				y:1,
-				x:1
+				y:0
 			}
 		}
 	},

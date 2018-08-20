@@ -16,10 +16,10 @@ import play from './commands/playerCommands.js';
 // var numPlayers = 0;
 
 /*Express setup*/
-app.use(express.static(path.resolve('./client')));
-app.get('/',function(req,res){
+app.use(express.static(path.resolve('./dist')));
+/*app.get('/',function(req,res){
 	res.sendFile(path.resolve('./client/src/index.html'));
-});
+});*/
 
 /*websocket setup*/
 const wss = new websocket.Server({server});

@@ -24,6 +24,7 @@ class GameLobbyScene extends Phaser.Scene{
 		this.oldPos ={x:0,y:0,angle:0,rotation:0};
 		this.temp;
 		/********************************************** WEBSOCKET FUNCTIONS **********************************************/
+
 		this.ws.onopen = function(){
 			/*send user information to server*/ 
 			var randomName = "J"+Math.floor(Math.random()*700)+50; //temp name creation
@@ -90,8 +91,6 @@ class GameLobbyScene extends Phaser.Scene{
 	    			break;
 	    	}
 	    }
-
-	    console.log(this.players.getChildren());
 
 	    /*********************************************** WINDOWS FUNCTIONS ***********************************************/
 	    /*Send a message to server when restarting or leaving the page*/
@@ -211,3 +210,5 @@ class GameLobbyScene extends Phaser.Scene{
 		// player.setAngle(angle);
 	}
 }
+
+export default GameLobbyScene;
