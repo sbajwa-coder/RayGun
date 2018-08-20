@@ -18,7 +18,17 @@ class Title extends Phaser.Scene {
 		// Phaser.Display.Align.In.Center(bg, this.add.zone(400, 300, 800, 600));
 		// Phaser.Display.Align.In.Center(playButton, bg);
 		
-		$("#shockfort-game").load('../html/entry-screen.html');
+		$("#shockfort-game").load('../html/entry-screen.html', function() {
+			$.when(
+			    $.getScript( "js/UI/animations.js" ),
+			    $.getScript("js/UI/entry-screen.js"),
+			    $.Deferred(function( deferred ){
+			        $( deferred.resolve );
+			    })
+			).done(function(data, textStatus, jqxhr ){
+				console.log('javascript assets finished loading');
+			});
+		});
 		// $("body").click(function(event) {
 		// 	 Act on the event 
 		// 	alert($(this));
@@ -31,10 +41,6 @@ class Title extends Phaser.Scene {
 		// }, function() {
 		// 	/* Stuff to do when the mouse leaves the element */
 		// });
-		$(".modal").click(function(event) {
-			/* Act on the event */
-			alert("hiiii");
-		});
 	}
 
 	update(delta) {

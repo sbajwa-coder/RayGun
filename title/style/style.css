@@ -102,7 +102,7 @@ body {
 	transform: translate(0%, -3%);
 }
 
-.icon {
+.switch-icon {
 	position: absolute;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -111,7 +111,7 @@ body {
 	padding-top: 5%;
 }
 
-.icon:hover {
+.switch-icon:hover {
 	cursor: pointer;
 	width: 6%;
 	padding-top: 6%;
@@ -153,11 +153,31 @@ body {
 	cursor: default;
 }
 
+.switch-icon > img.icon-cross {
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	width: 90%;
+	height: 90%;
+	opacity: 0.0;
+}
+
 /*
 --------------------------------------------------------------
 Login Modal
 --------------------------------------------------------------
 */
+
+.modal-close-icon {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 15px;
+}
+
+.modal-close-icon:hover {
+	cursor: pointer;
+}
 
 .modal-screen {
 	position: absolute;
@@ -168,8 +188,9 @@ Login Modal
 	right: 0;
 	left: 0;
 	background-color: black;
-	opacity: 0.5;
+	opacity: 0.0;
 	z-index: 10;
+	display: none;
 }
 
 @font-face {
@@ -218,6 +239,13 @@ Login Modal
 	margin: 0.6em 0 0.5em 0;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 .modal > form > input {
 	position: relative;
 	border: 1px solid #666;
@@ -234,8 +262,17 @@ Login Modal
 	margin-bottom: 6%;
 }
 
-.modal > form > input::placeholder {
-	color: #333;
+.modal > form > input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #555;
+ }
+.modal > form > input::-moz-placeholder { /* Firefox 19+ */
+  color: #555;
+}
+.modal > form > input:-ms-input-placeholder { /* IE 10+ */
+  color: #555;
+}
+.modal > form > input:-moz-placeholder { /* Firefox 18- */
+  color: #555;
 }
 
 .login-modal-button {
@@ -250,13 +287,19 @@ Login Modal
 	display: none;
 }
 
-.login-modal > .button-image:hover {
-	transform: translate(0%, 1%);
+.login-modal-button > .button-image:hover {
+	transform: translate(0%, 2%);
 }
+
+/*
+--------------------------------------------------------------
+Sign Up Modal
+--------------------------------------------------------------
+*/
 
 .sign-up-modal {
 	height: 76%;
-	display: block;
+	display: none;
 }
 
 .register-modal-button {
@@ -273,6 +316,32 @@ Login Modal
 
 /*
 --------------------------------------------------------------
-Sign Up Modal
+Instructions Modal
+--------------------------------------------------------------
+*/
+
+.instructions-modal {
+	width: 80%;
+	height: 90%;
+	top: 4.2%;
+	left: 4.2%;
+	padding: 0% 5%;
+	display: none;
+}
+
+.instructions-modal > .modal-heading {
+	text-align: left;
+}
+
+.instructions-text {
+	font-family: "pixellari";
+	text-align: left;
+	font-size: 140%;
+	line-height: 140%;
+}
+
+/*
+--------------------------------------------------------------
+Modal Animations
 --------------------------------------------------------------
 */
