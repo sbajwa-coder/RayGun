@@ -7,18 +7,18 @@ function Player(id, username){
 	this.team = 'none';
 	this.status = 'lobby';
 	this.gameID = 0;
-	this.inGameID = 0;
+	this.joinID = 0;
 }
 
-Player.prototype.joinLobby = function(gameID, inGameID){
+Player.prototype.joinLobby = function(gameID, joinID){
 	this.gameID = gameID;
-	this.inGameID = inGameID;
+	this.joinID = joinID;
 	this.status = 'gameLobby';
 }
 
 Player.prototype.leaveLobby = function(){
 	this.gameID = 0;
-	this.inGameID = 0;
+	this.joinID = 0;
 	this.status = 'lobby';
 	this.team = 'none';
 }
