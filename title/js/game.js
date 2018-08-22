@@ -1,17 +1,17 @@
 var config = {
-	type:Phaser.CANVAS,
+	type:Phaser.HEADLESS,
 	width:800,
 	height:600,
 	parent: 'shockfort-game',
 	transparent: true,
-	// physics: {
-	// 	default: 'matter',
-	// 	matter: {
-	// 		gravity: {y : 0, x: 0},
-	// 		debug: true
-	// 	}
-	// },
-	scene: [Title, Lobby]
+	physics: {
+		default: 'matter',
+		matter: {
+			gravity: {y : 0, x: 0},
+			debug: true
+		}
+	},
+	scene: [Lobby, Title]
 };
 
 var game = new Phaser.Game(config);

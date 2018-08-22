@@ -1,24 +1,4 @@
-
-
-// function HideModal() {
-// 	this.applyTo = function(dom) {
-// 		let prevTop = dom.css("top");
-// 		dom.animate({top: "+=20%"}, 70, function() {
-// 			$(this).animate({top: "-=150%"}, 400, function () {
-// 				dom.addClass('modal-hidden');
-// 				dom.css({"top": prevTop, "display": "none"});
-// 			});
-// 		});
-// 	}
-// }
-
-// const hideModal = new HideModal();
-
-// const hideModal2 = new Bounce();
-// hideModal2.scale({
-// 	from: {x: 1.0, y: 1.0 },
-// 	to: {x: 0.0, y: 0.0}
-// });
+var alertTimeout = null;
 
 function UIAnimations () {
 	this.showModal = function(dom) {
@@ -53,6 +33,24 @@ function UIAnimations () {
 	this.hideModalScreen = function(dom) {
 		dom.animate({"opacity": "0.0"}, 350, function () {
 			dom.css("display", "none");
+		});
+	}
+
+	this.showAlert = function(dom, button, callback = function(){}) {
+
+		if (alertTimeout) clearTimeout(alertTimeout);
+
+		let items = button.add(".modal-screen").add(".modal-close-icon")
+					.attr('disabled', 'disabled');
+
+		dom.animate({"opacity": "0.75"}, 200, function () {
+			alertTimeout = setTimeout(function () {
+				dom.animate({"opacity": "0.0"}, 200, function() {
+					dom.css("display", "none");
+					items.removeAttr('disabled');
+					callback();
+				});
+			}, 2000);
 		});
 	}
 }
