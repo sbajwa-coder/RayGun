@@ -46,9 +46,121 @@
 				<span class="locked">&#9635</span>
 			</div>
 		</div>
+	</div>
 
-		<div class="room-list-buttons">
-			
+	<div class="room-list-buttons">
+		<div class="create-button button-container">
+			<img src="../assets/UI/create-button.png" alt="create" class="button-image2">
+		</div>
+
+		<div class="join-button button-container disabled-button">
+			<img src="../assets/UI/join-button-disabled.png" alt="create" class="button-image2">
+		</div>
+
+		<div class="refresh-button button-container">
+			<img src="../assets/UI/refresh-button.png" alt="create" class="button-image2">
+		</div>
+	</div>
+
+	<div class="lobby-module game-status-panel">
+		<div class="game-status-row">
+			<span class="left-cell">
+				<span id="onlineUsersCount">238</span> People Online</span>
+			<span class="right-cell">
+				<img src="../assets/UI/coin-icon.png" alt="coin" class="coin-icon">
+				<span id="coinCount">92837</span>
+			</span>
+		</div>
+		<div class="game-status-row">
+			<span class="left-cell">
+				<span id="activeGamesCount">22</span> Active Games
+			</span>
+			<span class="right-cell">
+				CTF: <span id="ctfCount">12</span>
+				TDM: <span id="tdmCount">5</span>
+				FFA: <span id="ffaCount">5</span>
+			</span>
+		</div>
+		<div class="game-status-row">
+			<span class="left-cell">Last Signed In</span>
+			<span class="right-cell"><span id="lastSignIn">January 1st 2018</span></span>
+		</div>
+	</div>
+
+	<div class="lobby-module player-status-panel">
+		<div class="left-section">
+			<div class="username" id="username">Some_username_23</div>
+			<div class="player-preview"></div>
+			<div class="hpmp">
+				<span class="hp">HP:<span style="color:#00A000;" id="hp">100</span></span>
+				<span class="mp">MP:<span style="color:#0059B2;" id="mp">100</span></span>
+			</div>
+		</div>
+		<div class="stat-card">
+			<h3>STATS</h3>
+			<div class="stat-row">
+				<span class="stat-name">Kills</span>
+				<span class="stat-value" id="killCount">258</span>
+			</div>
+			<div class="stat-row">
+				<span class="stat-name">Deaths</span>
+				<span class="stat-value" id="deathCount">258</span>
+			</div>
+			<div class="stat-row">
+				<span class="stat-name">KDR</span>
+				<span class="stat-value" id="killDeathRatio">1.0</span>
+			</div>
+			<div class="stat-row">
+				<span class="stat-name">Rank</span>
+				<span class="stat-value" id="rank">Recruit</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal create-game-modal">
+		<img src="../assets/UI/modal-close-icon.png" alt="close" class="modal-close-icon">
+		<h1 class="modal-heading">Create Game</h1>
+
+		<div class="game-settings">
+			<h3 class="subheading">Settings</h3>
+
+			<div class="setting-row">
+				<span class="setting-name">Game Mode</span>
+				<span class="setting-value">
+					<span class="arrow-carousel">
+						< FFA >
+					</span>
+				</span>
+			</div>
+			<div class="setting-row">
+				<span class="setting-name">Capacity</span>
+				<span class="setting-value">
+					<span class="arrow-carousel">
+						< 6 >
+					</span>
+				</span>
+			</div>
+			<div class="setting-row">
+				<span class="setting-name">Password</span>
+				<span class="setting-value">
+					<span class="custom-radio">
+						
+					</span>
+				</span>
+			</div>
+			<input type="text" class="game-password" placeholder="password">
+			<div class="setting-row">
+				<span class="setting-name">Minimum Rank</span>
+				<span class="setting-value">
+					<span class="value-carousel">
+						- General +
+					</span>
+				</span>
+			</div>
+		</div>
+
+		<div class="map-selection">
+			<h3 class="subheading">Choose A Stage</h3>
 		</div>
 	</div>
 </div>

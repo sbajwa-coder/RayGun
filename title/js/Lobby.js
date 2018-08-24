@@ -21,7 +21,7 @@ class Lobby extends Phaser.Scene {
 			$("form").disableAutoFill();
 
 			$.when(
-			    //$.getScript( "js/UI/animations.js" ),
+			    $.getScript( "js/UI/animations.js" ),
 			    $.getScript("js/UI/title-page.js"),
 			    $.getScript("js/UI/lobby-page.js"),
 			    $.Deferred(function( deferred ){
