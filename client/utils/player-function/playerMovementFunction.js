@@ -1,6 +1,4 @@
-function playerMovementFunction(data){
-
-
+function playerMovementFunction(data, action){
 	let opposite = Math.sin(data.rotation) * 3; //change to player speed
 	let adjacent = Math.cos(data.rotation) * 3;
 
@@ -8,7 +6,7 @@ function playerMovementFunction(data){
 	let y = data.y;
 	let angle = data.angle;
 
-	switch (data.action) {
+	switch (action) {
 		case 'ArrowLeft':
 			angle-=3;
 			break;
@@ -31,5 +29,5 @@ function playerMovementFunction(data){
 			break;
 	}
 
-	return {x:x,y:y,angle:angle};
+	return {x:x, y:y, angle:angle};
 }

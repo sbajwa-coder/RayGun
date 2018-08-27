@@ -56,10 +56,11 @@ function ClientWebsocket(){ //Make this a class and make a constructor for singl
 	function createAccount(){
 		/*send user information to server*/ 
 		var randomName = "J"+Math.floor(Math.random()*700)+50; //temp name creation
-		ws.send(JSON.stringify({username:randomName, type:"join", gameID: 1})); //fixed information sent to server
+		ws.send(JSON.stringify({username:randomName, type:"WORLD_CONNECT", gameID: 1})); //fixed information sent to server
 	}
 }
 
+/*Singleton Design Pattern*/
 let instance;
 
 const client = function(sceneFunction){

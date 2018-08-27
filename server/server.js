@@ -33,12 +33,13 @@ wss.broadcast = function (data){
 }
 
 /*Import for Server functions*/
-import lobby from './gameLobbyServer.js';
-lobby.init(wss);
+/*import lobby from './gameLobbyServer.js';
+lobby.init(wss);*/
+import socketServer from './serverWebsocket.js';
 
 /*websocket messages*/
 wss.on('connection', function(ws) {	
-  lobby.lobbyServer(ws);
+  socketServer(ws);
 });
 
 wss.on('error', (e)=>console.log(e));
