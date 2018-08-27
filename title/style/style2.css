@@ -113,6 +113,8 @@ ROOM LIST
 
 .room-filter > .filter-mode {
 	margin: 0 4%;
+	width: 14%;
+	text-align: center;
 }
 
 .room-filter > .filter-item {
@@ -389,7 +391,7 @@ PLAYER STATUS PANEL
 	background-color: rgba(255,255,255,0.6);
 	background-image: url("../assets/design.png");
 	background-repeat: no-repeat;
-	background-position: 72% -220%;
+	background-position: 72% -350%;
 	background-size: 80%;
 	width: 90%;
 	padding-top: 65%;
@@ -464,6 +466,25 @@ PLAYER STATUS PANEL
 	float: right;
 	margin-right: 3%;
 
+}
+
+.player-preview > .character-name {
+	position: absolute;
+	background-color: rgba(0,0,0,0.5);
+	display: block;
+	color: white;
+	top: 30%;
+	left: 10%;
+	right: 10%;
+	border-radius: 8px;
+	text-align: center;
+	font-size: 14px;
+	padding: 2px 0px;
+}
+
+.player-preview > .absolute-carousel {
+	top: 42%;
+	margin: 6%;
 }
 
 /*
