@@ -7,6 +7,43 @@
 
 //$(".modal-screen").css({"display": "block","opacity": "0.5"});
 
+// OFF-CLICK ========================
+$(document).click(function(event) {
+	/* Act on the event */
+	let modeDropDown = $(".mode-dropdown");
+	if (!$(event.target).hasClass('filter-mode')) {
+		modeDropDown.css("display", "none");
+	}
+});
+
+// FILTER SYSTEM ==========================
+$(".filter-no-pass").click(function(event) {
+	/* Act on the event */
+	if ($(this).hasClass('no-pass-unselected')) {
+		$(this).removeClass('no-pass-unselected');
+		$("#noPassCheck").attr('src', '../assets/UI/checked-icon.png');
+	} else {
+		$(this).addClass('no-pass-unselected');
+		$("#noPassCheck").attr('src', '../assets/UI/unchecked-icon.png');
+	}
+});
+
+$(".filter-mode").click(function(event) {
+	/* Act on the event */
+	if ($(".mode-dropdown").css("display") == "block") {
+		$(".mode-dropdown").css("display", "none");
+	} else {
+		$(".mode-dropdown").css("display", "block");
+	}
+});
+
+$(".mode-item").click(function(event) {
+	/* Act on the event */
+	console.log($(this).html());
+});
+
+
+// LOGOUT ============================
 $(".logout-button").click(function(event) {
 	/* Act on the event */
 	if ($(this).attr("disabled")) return false;

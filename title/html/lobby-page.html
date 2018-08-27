@@ -22,8 +22,20 @@
 
 		<div class="room-filter">
 			<div>Filter:</div>
-			<div class="filter-mode filter-item">mode v</div>
-			<div class="filter-no-pass filter-item">no pass o</div>
+			<div class="filter-mode filter-item">mode</div>
+			<ul class="mode-dropdown">
+				<li class="mode-item selected-mode">any</li>
+				<li class="mode-item">FFA</li>
+				<li class="mode-item">CTF</li>
+				<li class="mode-item">TDM</li>
+			</ul>
+			<div class="filter-no-pass filter-item no-pass-unselected">
+				<span>no pass</span>
+				<span>
+					<img class="no-pass-check" id="noPassCheck" 
+					src="../assets/UI/unchecked-icon.png" alt="off">
+				</span>
+			</div>
 		</div>
 
 		<div class="room-list-entries" id="roomList">
@@ -31,19 +43,25 @@
 				<span class="title">Game name ova here!</span>
 				<span class="player-count">9/10</span>
 				<span class="game-mode">FFA</span>
-				<span class="locked">&#9635</span>
+				<span class="locked">
+					<img class="lock-icon" src="../assets/UI/unlocked-icon.png" alt="unlock">
+				</span>
 			</div>
 			<div class="room-list-row">
 				<span class="title">Game name ova here!</span>
 				<span class="player-count">9/10</span>
 				<span class="game-mode">FFA</span>
-				<span class="locked">&#9635</span>
+				<span class="locked">
+					<img class="lock-icon" src="../assets/UI/locked-icon.png" alt="lock">
+				</span>
 			</div>
 			<div class="room-list-row">
 				<span class="title">Game name ova here!</span>
 				<span class="player-count">9/10</span>
 				<span class="game-mode">FFA</span>
-				<span class="locked">&#9635</span>
+				<span class="locked">
+					<img class="lock-icon" src="../assets/UI/locked-icon.png" alt="lock">
+				</span>
 			</div>
 		</div>
 	</div>
