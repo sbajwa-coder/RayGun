@@ -3,12 +3,14 @@ var event1 = new CustomEvent("loginEvent", { "detail": "Example of an event" });
 // MODAL OPENING ==========================
 $(".modal-trigger").click(function(event) {
 	/* Act on the event */
+	console.log('modal opener clicked');
 	let classList = $(this).attr("class").split(" ");
 	let modalId = "";
 	for (let item of classList) {
 		const words = item.split("-");
 		if (words[0] === "trigger") {
 			modalId = words[1] + "Modal";
+			console.log(modalId);
 			break;
 		}
 	}

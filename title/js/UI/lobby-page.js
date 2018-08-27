@@ -5,8 +5,7 @@
 // });
 // console.log(ps);
 
-$(".modal-screen").css("display", "block");
-$(".modal-screen").animate({"opacity": "0.5"}, 200);
+//$(".modal-screen").css({"display": "block","opacity": "0.5"});
 
 $(".logout-button").click(function(event) {
 	/* Act on the event */

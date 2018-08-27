@@ -11,7 +11,7 @@ var config = {
 			debug: true
 		}
 	},
-	scene: [Lobby, Title]
+	scene: [Title, Lobby]
 };
 
 var game = new Phaser.Game(config);

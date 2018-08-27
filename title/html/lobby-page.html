@@ -50,7 +50,8 @@
 
 	<div class="room-list-buttons">
 		<div class="create-button button-container">
-			<img src="../assets/UI/create-button.png" alt="create" class="button-image2">
+			<img src="../assets/UI/create-button.png" alt="create" 
+			class="button-image2 modal-trigger trigger-createGame">
 		</div>
 
 		<div class="join-button button-container disabled-button">
@@ -117,7 +118,7 @@
 		</div>
 	</div>
 
-	<div class="modal create-game-modal">
+	<div class="modal create-game-modal modal-hidden" id="createGameModal">
 		<img src="../assets/UI/modal-close-icon.png" alt="close" class="modal-close-icon">
 		<h1 class="modal-heading">Create Game</h1>
 
@@ -128,7 +129,9 @@
 				<span class="setting-name">Game Mode</span>
 				<span class="setting-value">
 					<span class="arrow-carousel">
-						< FFA >
+						<div class="carousel-arrow carousel-back button"></div>
+						<span class="game-mode-value">FFA</span>
+						<div class="carousel-arrow carousel-forward button"></div>
 					</span>
 				</span>
 			</div>
@@ -136,7 +139,9 @@
 				<span class="setting-name">Capacity</span>
 				<span class="setting-value">
 					<span class="arrow-carousel">
-						< 6 >
+						<div class="carousel-arrow carousel-back button"></div>
+						<span class="capacity-value">6</span>
+						<div class="carousel-arrow carousel-forward button"></div>
 					</span>
 				</span>
 			</div>
@@ -144,7 +149,12 @@
 				<span class="setting-name">Password</span>
 				<span class="setting-value">
 					<span class="custom-radio">
-						
+						<span class="radio-item">
+							Yes <img src="../assets/UI/radio-button-on.png" alt="Y">
+						</span>
+						<span class="radio-item">
+							No <img src="../assets/UI/radio-button-off.png" alt="N">
+						</span>
 					</span>
 				</span>
 			</div>
@@ -153,14 +163,30 @@
 				<span class="setting-name">Minimum Rank</span>
 				<span class="setting-value">
 					<span class="value-carousel">
-						- General +
+						<div class="minus-button button"></div>
+						<span class="rank-value">Recruit</span>
+						<div class="plus-button button"></div>
 					</span>
 				</span>
 			</div>
 		</div>
 
 		<div class="map-selection">
+			<div class="map-selection-name">SHOCKFORT</div>
+			<div class="absolute-carousel carousel-back button"></div>
 			<h3 class="subheading">Choose A Stage</h3>
+			<div class="absolute-carousel carousel-forward button"></div>
+			<p class="map-caption">There would be some sort of map caption here.
+			Maybe some statistics as well idk.</p>
+		</div>
+
+		<div class="create-game-buttons">
+			<div class="button-container cancel-create-button">
+				<img src="../assets/UI/cancel-button.png" alt="cancel" class="button-image2">
+			</div>
+			<div class="button-container confirm-create-button">
+				<img src="../assets/UI/create-button.png" alt="cancel" class="button-image2">
+			</div>
 		</div>
 	</div>
 </div>

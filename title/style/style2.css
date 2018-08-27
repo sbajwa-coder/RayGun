@@ -412,18 +412,20 @@ CREATE GAME MODAL
 */
 
 .create-game-modal {
-	left: 14.5%;
-	top: 14.5%;
+	left: 6.5%;
+	top: 6.5%;
 	position: absolute;
-	width: 70%;
-	height: 70%;
+	width: 86%;
+	height: 86%;
+	display: none;
 }
 
 .create-game-modal > .modal-heading {
 	text-align: left;
-	margin-left: 5%;
+	margin-top: 2.5%;
+	margin-left: 3%;
 	font-size: 30px;
-	width: 89%;
+	width: 93.5%;
 	padding-bottom: 2.5%;
 	border-bottom: 1px solid black;
 }
@@ -433,23 +435,25 @@ CREATE GAME MODAL
 	background-color: rgba(255,255,255,0.6);
 	border: 1px solid #8FC4E7;
 	border-radius: 10px;
-	padding: 0% 4.5%;
+	padding: 0% 3.5% 0% 3%;
 	text-align: left;
-	margin-top: 6%;
-	margin-left: 5%;
-	width: 32%;
+	margin-top: 5%;
+	margin-left: 2%;
+	width: 34%;
+	height: 73%;
+	font-size: 18px;
 }
 
 .create-game-modal .subheading {
 	margin-top: -35px;
 	margin-left: -20px;
-	margin-bottom: 18%;
+	margin-bottom: 13%;
 	text-align: left;
+	font-size: 22px;
 }
 
 .setting-row {
 	clear: both;
-	margin-bottom: 15%;
 	padding-bottom: 10%;
 	width: 99%;
 	/*margin-top: -10%;*/
@@ -462,6 +466,12 @@ CREATE GAME MODAL
 
 .setting-row > .setting-value {
 	float: right;
+	font-family: "pixellari";
+	margin-top: 1%;
+}
+
+.setting-row, .game-password {
+	margin-bottom: 20%;
 }
 
 /*password row*/
@@ -470,10 +480,13 @@ CREATE GAME MODAL
 	margin-bottom: 0%;
 }
 
+.setting-row:last-child {
+	margin-bottom: 15%;
+}
+
 .game-password {
 	font-size: 11px;
 	margin-top: 2%;
-	margin-bottom: 10%;
 	width: 90%;
 	background-color: #FFF;
 	border: 1px solid #999;
@@ -482,33 +495,184 @@ CREATE GAME MODAL
 }
 
 input.game-password::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #000;
+  color: #555;
+  opacity: 1.0;
  }
 input.game-password::-moz-placeholder { /* Firefox 19+ */
-  color: #000;
+  color: #555;
+  opacity: 1.0;
 }
 input.game-password:-ms-input-placeholder { /* IE 10+ */
-  color: #000;
+  color: #555;
+  opacity: 1.0;
 }
 input.game-password:-moz-placeholder { /* Firefox 18- */
-  color: #000;
+  color: #555;
+  opacity: 1.0;
 }
 
 .disabled-input {
-
+	background-color: #CCC;
+	pointer-events: none;
 }
 
+.create-game-modal .plus-button, .create-game-modal .minus-button {
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	position: relative;
+	display: inline-block;
+}
+
+.create-game-modal .plus-button {
+	background-image: url("../assets/UI/plus-button.png");
+	margin-left: 5px;
+	/*pointer-events:none;*/
+}
+
+.create-game-modal .minus-button {
+	background-image: url("../assets/UI/minus-button-disabled.png");	
+	margin-right: 5px;
+}
+
+.custom-radio {
+	margin-top: -3px;
+	display: block;
+}
+
+.radio-item {
+	font-size: 15px;
+	margin-left: 10px;
+}
+
+.radio-item:hover {
+	cursor: pointer;
+}
+
+.radio-item > img {
+	width: 20px;
+	vertical-align: middle;
+}
+
+.carousel-back {
+	background-image: url("../assets/UI/carousel-back-button.png");
+}
+
+.carousel-forward {
+	background-image: url("../assets/UI/carousel-forward-button.png");
+}
+
+.capacity-value, .game-mode-value {
+	margin: 0px 7px;
+}
+
+.capacity-value {
+	font-size: 20px;
+}
+
+.arrow-carousel div.carousel-arrow {
+	width: 18px;
+	height: 30px;
+	vertical-align: middle;
+	position: relative;
+	display: inline-block;
+	margin-top: -5px;
+}
+
+
+
+
+
+
+/*
+MAP SELECTION ====================
+*/
 .map-selection {
 	float: right;
-	width: 35%;
-	height: 100px;
-	margin: 0;
-	margin-top: 6%;
-	margin-right: 5%;
+	width: 46%;
+	height: 52%;
+	margin-left: 0;
+	margin-right: 2%;
+	background-image: url("../assets/UI/shockfort-bg.png");
+	background-position: center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+.absolute-carousel {
+	position: absolute;
+	width: 9%;
+	padding-top: 15%;
+	top: 40%;
+	opacity: 0.9;
+}
+
+.absolute-carousel:hover {
+	opacity: 1.0;
+}
+
+.absolute-carousel.carousel-back {
+	left: 4%;
+}
+
+.absolute-carousel.carousel-forward {
+	right: 4%;
+}
+
+.map-selection-name {
+	position: absolute;
+	background-color: rgba(0,0,0,0.5);
+	color: white;
+	text-align: center;
+	padding: 3% 0%;
+	font-size: 24px;
+	height: 25px;
+	left: 3%;
+	right: 3%;
+	top: 5%;
+	border-radius: 5px;
+	line-height: 21px;
 }
 
 .map-selection:hover {
-	cursor: zoom-in;
+	cursor: pointer;
+}
+
+.create-game-buttons {
+	position: absolute;
+	bottom: 3%;
+	right: 2%;
+	width: 42%;
+	height: 10%;
+}
+
+p.map-caption {
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	margin-bottom: -12%;
+	font-family: "pixellari";
+	font-size: 14px;
+	left: 2%;
+	right: 2%;
+	color: #333;
+	letter-spacing: 0.3px;
+	word-spacing: 3px
+}
+
+.cancel-create-button, .confirm-create-button {
+	height: 100%;
+	width: 50%;
+	/*background-color: blue;*/
+}
+
+.cancel-create-button {
+	float: left;
+}
+
+.confirm-create-button {
+	float: right;
 }
 
 
