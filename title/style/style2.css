@@ -389,7 +389,7 @@ PLAYER STATUS PANEL
 
 .player-status-panel .player-preview {
 	background-color: rgba(255,255,255,0.6);
-	background-image: url("../assets/design.png");
+	background-image: url("../assets/design1.png");
 	background-repeat: no-repeat;
 	background-position: 72% -350%;
 	background-size: 80%;
@@ -415,14 +415,27 @@ PLAYER STATUS PANEL
 	right: 5%;
 }
 
+.player-status-panel .hp, .player-status-panel .mp {
+	width: 45%;
+	display: inline-block;
+	text-align: center;
+}
+
 .player-status-panel .hp {
 	float: left;
-	margin-left: 12%;
+	margin-left: 5%;
 }
 
 .player-status-panel .mp {
 	float: right;
-	margin-right: 12%;
+	margin-right: 5%;
+}
+
+#hp, #mp {
+	width: 50%;
+	display: inline-block;
+	text-align: left;
+	margin-left: 4%;
 }
 
 .stat-card > h3 {
@@ -661,6 +674,22 @@ input.game-password:-moz-placeholder { /* Firefox 18- */
 	margin-top: -5px;
 }
 
+.carousel-value {
+	text-align: center;
+	display: inline-block;
+}
+
+.game-mode-value {
+	width: 35px;
+}
+
+.capacity-value {
+	width: 22px;
+}
+
+.rank-value {
+	width: 70px;
+}
 
 
 

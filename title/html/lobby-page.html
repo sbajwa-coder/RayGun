@@ -111,7 +111,7 @@
 			<div class="username" id="username">Some_username_23</div>
 			<div class="player-preview">
 				<div class="absolute-carousel carousel-back button"></div>
-				<div class="character-name">Warrior</div>
+				<div class="character-name">design1</div>
 				<div class="absolute-carousel carousel-forward button"></div>
 			</div>
 			<div class="hpmp">
@@ -150,9 +150,9 @@
 			<div class="setting-row">
 				<span class="setting-name">Game Mode</span>
 				<span class="setting-value">
-					<span class="arrow-carousel">
+					<span class="arrow-carousel" id="gameModeCarousel">
 						<div class="carousel-arrow carousel-back button"></div>
-						<span class="game-mode-value">FFA</span>
+						<span class="game-mode-value carousel-value" id="gameModeValue">FFA</span>
 						<div class="carousel-arrow carousel-forward button"></div>
 					</span>
 				</span>
@@ -160,9 +160,9 @@
 			<div class="setting-row">
 				<span class="setting-name">Capacity</span>
 				<span class="setting-value">
-					<span class="arrow-carousel">
+					<span class="arrow-carousel" id="capacityCarousel">
 						<div class="carousel-arrow carousel-back button"></div>
-						<span class="capacity-value">6</span>
+						<span class="capacity-value carousel-value" id="capacityValue">6</span>
 						<div class="carousel-arrow carousel-forward button"></div>
 					</span>
 				</span>
@@ -170,44 +170,44 @@
 			<div class="setting-row">
 				<span class="setting-name">Password</span>
 				<span class="setting-value">
-					<span class="custom-radio">
-						<span class="radio-item">
+					<span class="custom-radio" id="passwordRadio">
+						<span class="radio-item" id="yesPassword">
 							Yes <img src="../assets/UI/radio-button-on.png" alt="Y">
 						</span>
-						<span class="radio-item">
+						<span class="radio-item" id="noPassword">
 							No <img src="../assets/UI/radio-button-off.png" alt="N">
 						</span>
 					</span>
 				</span>
 			</div>
-			<input type="text" class="game-password" placeholder="password">
+			<input type="text" id="gamePassword" class="game-password" placeholder="password">
 			<div class="setting-row">
 				<span class="setting-name">Minimum Rank</span>
 				<span class="setting-value">
-					<span class="value-carousel">
+					<span class="value-carousel" id="rankCarousel">
 						<div class="minus-button button"></div>
-						<span class="rank-value">Recruit</span>
+						<span class="rank-value carousel-value" id="rankValue">Recruit</span>
 						<div class="plus-button button"></div>
 					</span>
 				</span>
 			</div>
 		</div>
 
-		<div class="map-selection">
-			<div class="map-selection-name">SHOCKFORT</div>
+		<div class="map-selection" id="mapSelection">
+			<div class="map-selection-name" id="mapSelectionName">SHOCKFORT</div>
 			<div class="absolute-carousel carousel-back button"></div>
 			<h3 class="subheading">Choose A Stage</h3>
 			<div class="absolute-carousel carousel-forward button"></div>
-			<p class="map-caption">There would be some sort of map caption here.
+			<p class="map-caption" id="mapCaption">There would be some sort of map caption here.
 			Maybe some statistics as well idk.</p>
 		</div>
 
 		<div class="create-game-buttons">
 			<div class="button-container cancel-create-button">
-				<img src="../assets/UI/cancel-button.png" alt="cancel" class="button-image2">
+				<img id="createCancel" src="../assets/UI/cancel-button.png" alt="cancel" class="button-image2">
 			</div>
 			<div class="button-container confirm-create-button">
-				<img src="../assets/UI/create-button.png" alt="cancel" class="button-image2">
+				<img id="createConfirm" src="../assets/UI/create-button.png" alt="cancel" class="button-image2">
 			</div>
 		</div>
 	</div>
