@@ -1,6 +1,7 @@
 //import Phaser from 'phaser';
 // import BootScene from './scenes/BootScene';
 import GameLobbyScene from './scenes/GameLobbyScene';
+import testScene from './scenes/testScene';
 
 var config = {
 	type: Phaser.AUTO,
@@ -19,7 +20,7 @@ var config = {
 			}
 		}
 	},
-	scene: [GameLobbyScene]
+	scene: [GameLobbyScene,testScene]
 };
 
 const game = new Phaser.Game(config);

@@ -69,7 +69,7 @@ function gameLobbyFunction(lobbyScene){
 			case 'Attack':
 				player.anims.play('warriorAttack',true);
 				break;
-				
+
 			case 'Stop':
 				player.anims.stop();
 				player.setFrame('tile000.png');
@@ -105,6 +105,13 @@ function gameLobbyFunction(lobbyScene){
 
 		scene.cameras.main.setBounds(0,0,bg.width,bg.height);
 	    scene.matter.world.setBounds(0,0,bg.width,bg.height);
+
+	    /*Make the terminal*/
+	    let terminal = scene.matter.add.sprite(500,500,'warrior','tile000.png').setInteractive({ cursor: 'pointer' });
+
+	    terminal.on('pointerdown', function(pointer){
+	    	alert($(document));
+		});
 	}
 
 	this.disconnect = function(){

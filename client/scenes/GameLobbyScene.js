@@ -1,6 +1,7 @@
 import client from '../utils/clientWebsocket.js';
 import sceneFunction from '../utils/scene-function/gameLobbyFunction.js'
 import characterAnims from '../utils/animation/characterAnims.js'
+import keybindings from '../game-objects/player/keybindings.js'
 
 class GameLobbyScene extends Phaser.Scene{
 	constructor(){
@@ -32,41 +33,40 @@ class GameLobbyScene extends Phaser.Scene{
 		var self = this;
 
 		/*Does everything for websockets and windows*/
-		this.scene = new sceneFunction(this);
+		this.sceneFunction = new sceneFunction(this);
 		this.client = client;
-		this.client(this.scene);
+		this.client(this.sceneFunction);
 
 		/*Animations*/
 		characterAnims(this);
 
-	    this.arrows = this.input.keyboard.createCursorKeys();
-	    this.attack = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);	
+		this.controls = keybindings(this);
 	    this.movement = false;
-
 	}		
 
 	update(){
 		/*Check if the camera is following a player*/
 	    if (this.viewedPlayer<=0){
-	    	this.scene.followPlayer(this.joinID);
+	    	this.sceneFunction.followPlayer(this.joinID);
 	    }
 
 	    /*Movement*/
-		if (this.arrows.left.isDown){
+		if (this.controls.left.isDown){
 			client.send({type:'PLAYER_MOVE',action:'ArrowLeft',joinID:this.joinID, gameID:1});
 		}
-		else if (this.arrows.right.isDown){
+		else if (this.controls.right.isDown){
 			client.send({type:'PLAYER_MOVE',action:'ArrowRight',joinID:this.joinID, gameID:1});
 		}
 
-		if (this.attack.isDown){
+		//NOTE: spaming both buttons will cause a jitter
+		if (this.controls.attack.isDown){
 			client.send({type:'PLAYER_MOVE',action:'Attack', joinID:this.joinID, gameID:1});
 		}
-		else if (this.arrows.up.isDown){
+		else if (this.controls.up.isDown){
 			this.movement = true;
 			client.send({type:'PLAYER_MOVE',action:'ArrowUp', joinID:this.joinID, gameID:1});
 		}
-		else if (this.arrows.down.isDown){
+		else if (this.controls.down.isDown){
 			this.movement = true;
 			client.send({type:'PLAYER_MOVE',action:'ArrowDown', joinID:this.joinID, gameID:1});
 		}
