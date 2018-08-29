@@ -99,15 +99,15 @@ function gameLobbyFunction(lobbyScene){
 
 		/*Make the map*/
 		let mapData = scene.cache.json.get(data.background+'_objects');
-		let bg = scene.add.image(0,0,data.background).setOrigin(0,0).setDepth(-1);
-		let obj = scene.matter.add.sprite(0,0,null,null,{shape:mapData.template}).setStatic(true).setOrigin(0,0).setPosition(bg.width/2+25, bg.height/2-60).setScale(4,4).setDepth(-22);
-		obj.visible = false;
+
+		let bg = scene.matter.add.sprite(0,0,data.background,null,{shape:mapData.template}).setStatic(true).setDepth(-1);
+		bg.setPosition(0 + bg.centerOfMass.x, 0 + bg.centerOfMass.y); //Sets the position to (0,0) 
 
 		scene.cameras.main.setBounds(0,0,bg.width,bg.height);
 	    scene.matter.world.setBounds(0,0,bg.width,bg.height);
 
 	    /*Make the terminal*/
-	    let terminal = scene.matter.add.sprite(500,500,'warrior','tile000.png').setInteractive({ cursor: 'pointer' });
+	   	let terminal = scene.matter.add.sprite(500,500,'warrior','tile000.png').setInteractive({ cursor: 'pointer' });
 
 	    terminal.on('pointerdown', function(pointer){
 	    	alert($(document));
