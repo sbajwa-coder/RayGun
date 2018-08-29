@@ -1,5 +1,3 @@
-//import Phaser from 'phaser';
-// import BootScene from './scenes/BootScene';
 import GameLobbyScene from './scenes/GameLobbyScene';
 import testScene from './scenes/testScene';
 
