@@ -565,12 +565,12 @@ CREATE GAME MODAL
 	margin-top: 1%;
 }
 
-.setting-row, .game-password {
-	margin-bottom: 20%;
+.setting-row, .game-textfield {
+	margin-bottom: 12%;
 }
 
 /*password row*/
-.setting-row:nth-child(4) { 
+.setting-row:nth-child(4n+2) { 
 	clear: both;
 	margin-bottom: 0%;
 }
@@ -579,29 +579,43 @@ CREATE GAME MODAL
 	margin-bottom: 15%;
 }
 
-.game-password {
-	font-size: 11px;
+.generate-button {
+	width: 100px;
+	height: 30px;
+
+	margin-right: -14%;
+	margin-top: -5%;
+}
+
+.game-textfield {
+	font-size: 14px;
 	margin-top: 2%;
 	width: 90%;
 	background-color: #FFF;
 	border: 1px solid #999;
-	padding: 4% 5% 5% 5%;
+	padding: 5% 5% 5% 5%;
 	border-radius: 4px;
+	font-family: "pixellari";
+	letter-spacing: 0.5px;
+
+	/*padding-left: 10%;
+	color: transparent;
+	text-shadow: 0 0 0 black;*/
 }
 
-input.game-password::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+input.game-textfield::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #555;
   opacity: 1.0;
  }
-input.game-password::-moz-placeholder { /* Firefox 19+ */
+input.game-textfield::-moz-placeholder { /* Firefox 19+ */
   color: #555;
   opacity: 1.0;
 }
-input.game-password:-ms-input-placeholder { /* IE 10+ */
+input.game-textfield:-ms-input-placeholder { /* IE 10+ */
   color: #555;
   opacity: 1.0;
 }
-input.game-password:-moz-placeholder { /* Firefox 18- */
+input.game-textfield:-moz-placeholder { /* Firefox 18- */
   color: #555;
   opacity: 1.0;
 }

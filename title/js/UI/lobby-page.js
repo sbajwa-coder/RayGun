@@ -85,7 +85,7 @@ var capacities = [...Array(maxCapacity+1).keys()].slice(minCapacity, maxCapacity
 
 var capacityCarousel = new TextCarousel(capacities, $("#capacityCarousel .carousel-back"),
 					$("#capacityCarousel .carousel-forward"),
-					$("#capacityValue"), 5);
+					$("#capacityValue"), 4);
 capacityCarousel.wireArrow();
 
 // rank carousel
@@ -182,10 +182,56 @@ $("#createCancel").click(function(event) {
 	$(".modal-screen").trigger('click');
 });
 
+function GameMake(gameName, gameMode, capacity, password, minRank, map) {
+	this.gameName = gameName;
+	this.gameMode = gameMode;
+	this.capacity = capacity;
+	this.password = password;
+	this.minRank = minRank;
+	this.map = map;
+
+	this.createRoomListEntry = function() {
+		console.log(this.gameName);
+		console.log(this.gameMode);
+		console.log(this.capacity);
+		console.log(this.password);
+		console.log(this.minRank);
+		console.log(this.map);
+
+		const row = '<div class="room-list-row">' +
+			'<span class="title">Game name ova here!</span>' +
+			'<span class="player-count">9/10</span>' +
+			'<span class="game-mode">FFA</span>' +
+			'<span class="locked">' +
+				'<img class="lock-icon" src="../assets/UI/unlocked-icon.png" alt="unlock">' +
+			'</span>' +
+		'</div>';
+
+		console.log(row);
+	}
+
+	this.sendGameMake = function() {
+		console.log('sending');
+	}
+}
+
 $("#createConfirm").click(function(event) {
 	/* Act on the event */
-	console.log('confirm');
+	const gameName = $("#gameName").val();
+	const gameMode = $("#gameModeValue").html();
+	const capacity = $("#capacityValue").html();
+	const password = $("#gamePassword").val();
+	const minRank = $("#rankValue").html();
+	const map = $("#mapSelectionName").html();
+
+	let gameMake = new GameMake(gameName, gameMode, capacity,
+						 password, minRank, map);
+
+	gameMake.createRoomListEntry();
+
 });
+
+
 
 // $("#gameModeCarousel .carousel-back").click(function(event) {
 // 	/* Act on the event */
