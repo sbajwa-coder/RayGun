@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "copy": "mkdir dist && cp -r client/assets dist/assets",
     "parcel": "node node_modules/parcel-bundler/bin/cli.js",
     "build-parcel": "npm run parcel build client/index.html --public-url ./",
     "web-parcel": "npm run parcel client/index.html --public-url ./",
