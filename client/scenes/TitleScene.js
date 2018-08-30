@@ -1,3 +1,4 @@
+import y from  '../utils/UI/title-page.js';
 class TitleScene extends Phaser.Scene{
 	constructor(test){
 		super({
@@ -7,7 +8,9 @@ class TitleScene extends Phaser.Scene{
 
 	preload(){}
 
-	create(){}
+	create(){
+		this.scene.start('gameLobbyScene');
+	}
 }
 
 export default TitleScene;

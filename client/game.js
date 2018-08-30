@@ -1,3 +1,5 @@
+import TitleScene from './scenes/TitleScene';
+import LobbyScene from './scenes/LobbyScene';
 import GameLobbyScene from './scenes/GameLobbyScene';
 import testScene from './scenes/testScene';
 
@@ -18,7 +20,7 @@ var config = {
 			}
 		}
 	},
-	scene: [GameLobbyScene,testScene]
+	scene: [TitleScene,LobbyScene,GameLobbyScene,testScene]
 };
 
 const game = new Phaser.Game(config);

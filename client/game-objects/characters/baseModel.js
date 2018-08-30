@@ -5,11 +5,6 @@ function Character(model, spritesheet, spriteData, startImage){
 	this.spriteData = spriteData;
 	this.startImage = startImage || 'tile000.png';
 
-	/*Position*/
-	this.x = 0;
-	this.y = 0;
-	this.angle = 0;
-	this.rotation = 0;
 
 	/*Stats*/
 	this.str = 100; //see what kind of stats we need
