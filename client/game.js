@@ -1,10 +1,13 @@
 import GameLobbyScene from './scenes/GameLobbyScene';
+import LobbyScene from './scenes/LobbyScene';
+import TitleScene from './scenes/TitleScene';
 import testScene from './scenes/testScene';
 
 var config = {
 	type: Phaser.AUTO,
 	height:600,
 	width:800,
+	parent: 'shockfort-game',
 	physics: {
 		default: 'matter',
 		matter: {
@@ -18,7 +21,7 @@ var config = {
 			}
 		}
 	},
-	scene: [GameLobbyScene,testScene]
+	scene: [TitleScene, LobbyScene, GameLobbyScene]//,LobbyScene,GameLobbyScene,testScene]
 };
 
 const game = new Phaser.Game(config);

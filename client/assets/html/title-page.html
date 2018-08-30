@@ -1,0 +1,93 @@
+<div class="splash-screen page-size" id="titlePage">
+	<div class="alert-box modal"></div>
+	<div class="modal-screen"></div>
+	<div class="top-bar">
+		<div id="loginButton" class="login-button button modal-trigger trigger-login"></div>
+		<!-- <img src="../assets/UI/login-button.png" alt="login" class="login-button"> -->
+		<div id="signUpButton" class="sign-up-button button modal-trigger trigger-signUp"></div>
+		<!-- <img src="../assets/UI/sign-up-button.png" alt="register" class="sign-up-button"> -->
+	</div>
+
+	<img src="../assets/UI/shockfort-logo.png" alt="shockfort" class="shockfort-logo">
+
+	<div class="center-buttons">
+		<!-- <img src="../assets/UI/play-button.png" alt="play" class="play-button">
+		<img src="../assets/UI/quick-play-button.png" alt="play as guest" class="quick-play-button">
+		<img src="../assets/UI/how-to-play-button.png" alt="how to play" class="how-to-play-button"> -->
+		<!-- <div class="play-button button"></div> -->
+		<div class="button-container play-button">
+			<img src="../assets/UI/play-button.png" alt="play" class="button-image"></div>
+
+		<div class="button-container quick-play-button">
+			<img src="../assets/UI/quick-play-button.png" alt="play" class="button-image"></div>
+
+		<div class="button-container how-to-play-button modal-trigger trigger-instructions">
+			<img src="../assets/UI/how-to-play-button.png" alt="play" class="button-image"></div>		
+	</div>
+	
+	<!-- <img src="../assets/UI/music-on-icon.png" alt="turn music off" class="music-on-icon">
+	<img src="../assets/UI/sound-on-icon.png" alt="turn sound off" class="sound-on-icon">
+	<img src="../assets/UI/shop-button-disabled.png" alt="" class="shop-button-disabled"> -->
+	<div class="music-on-icon switch-icon">
+		<img src="../assets/UI/cross-out-icon.png" alt="off" class="icon-cross"></div>
+	<div class="sound-on-icon switch-icon">
+		<img src="../assets/UI/cross-out-icon.png" alt="off" class="icon-cross"></div>
+	<div class="shop-button button"></div>
+
+	<div id="loginModal" class="modal login-modal modal-hidden">
+		<img src="../assets/UI/modal-close-icon.png" alt="close" class="modal-close-icon">
+		<h1 class="modal-heading">Login</h1>
+
+		<form action="" class="login-form">
+			<input type="text" name="login-username" placeholder="username / email" autocomplete="off">
+			<br>
+			<input type="password" name="login-password" placeholder="password" autocomplete="off">
+			<br>
+			<div class="button-container login-modal-button">
+				<img src="../assets/UI/login-button.png" alt="play" class="button-image">
+			</div>
+		</form>
+	</div>
+
+	<div id="signUpModal" class="modal sign-up-modal modal-hidden">
+		<img src="../assets/UI/modal-close-icon.png" alt="close" class="modal-close-icon">
+		<h1 class="modal-heading">Sign Up</h1>
+
+		<form action="" class="sign-up-form">
+			<input type="text" name="register-username" placeholder="username" autocomplete="off">
+			<br>
+			<input type="email" name="register-email" placeholder="email" autocomplete="off">
+			<br>
+			<input id="yeep" type="password" name="register-password" 
+				placeholder="password" autocomplete="new-password">
+			<br>
+			<input type="confirm password" name="regitser-confirm" placeholder="confirm password"
+				autocomplete="off">
+			<br>
+			<div class="button-container register-modal-button">
+				<img src="../assets/UI/sign-up-button.png" alt="sign up" class="button-image">
+			</div>
+		</form>
+	</div>
+
+	<div id="instructionsModal" class="modal instructions-modal modal-hidden">
+		<img src="../assets/UI/modal-close-icon.png" alt="close" class="modal-close-icon">
+		<h1 class="modal-heading">How to Play</h1>
+
+		<div class="instructions-text">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in iaculis odio. Donec malesuada nisi purus, non vestibulum ante porttitor et. Nunc a quam et enim gravida auctor. Nam condimentum vel metus congue hendrerit. Vivamus at egestas dolor. Duis quis ex tortor. Etiam iaculis malesuada metus, in facilisis orci congue ac.
+		</div>
+		<br>
+		<div style="display:inline-block;vertical-align: middle;" class="instructions-text">
+		  Donec vel tristique dui. Sed eleifend erat in tortor faucibus, vel auctor ligula porttitor. Pellentesque vel luctus arcu. Nulla facilisi. Etiam porttitor justo id tempor dignissim.
+		</div>
+		<div id="qr" style="display:inline-block; min-width:2.2cm; height:3.8cm; align: center;vertical-align: middle;">
+		  <img src="http://i.stack.imgur.com/25Rl3.jpg" style="height:3.8cm;">
+		</div>
+
+
+
+	</div>
+
+
+</div>

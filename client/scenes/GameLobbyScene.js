@@ -6,7 +6,7 @@ import keybindings from '../game-objects/player/keybindings.js'
 class GameLobbyScene extends Phaser.Scene{
 	constructor(){
 		super({
-			key: 'gameLobbyScene'
+			key: 'GameLobbyScene'
 		});
 	}
 

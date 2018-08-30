@@ -1,0 +1,809 @@
+.lobby-page {
+	position: relative;
+}
+
+.logout-button {
+	right: 1.5%;
+	top: 3%;
+	width: 14%;
+	position: absolute;
+}
+
+.top-left > .switch-icon {
+	width: 3.5%;
+	padding-top: 3.5%;
+}
+
+.top-left > .music-on-icon {
+	bottom: auto;
+	left: 2%;
+	top: 2%;
+}
+
+.top-left > .sound-on-icon {
+	bottom: auto;
+	left: 8.5%;
+	top: 2%;
+}
+
+.top-left > .sound-on-icon:hover {
+	transform: scale(1.2);
+}
+
+.top-left > .music-on-icon:hover {
+	transform: scale(1.2);
+}
+
+.lobby-page .shop-button {
+	background-size: 97%;
+	bottom: 3%;
+	right: 2.7%;
+	width: 11.5%;
+	height: 7.5%;
+	padding: 0;
+}
+
+.lobby-page .shop-button:hover {
+	transform: scale(1.05);
+	cursor: default;
+}
+
+.lobby-logo {
+	width: 24%;
+	position: absolute;
+	left: 38%;
+	right: 38%;
+	top: 3%;
+	padding: 0;
+	margin: 0;
+}
+
+
+
+/*
+----------------------------------------
+ROOM LIST
+----------------------------------------
+*/
+.lobby-module {
+	background-color: rgba(255,255,255,0.8);
+	border-radius: 7px;
+	border: 1px solid black;
+	position: absolute;
+	font-family: "pixellari";
+}
+
+.lobby-module:hover {
+	background-color: rgba(255, 255, 255, 0.75);
+}
+
+.room-list-table {
+	width: 46.4%;
+	height: 70%;
+	left: 3%;
+	top: 17%;
+}
+
+.room-list-heading {
+	font-family: "comicScript";
+	font-weight: normal;
+	margin-left: 5%;
+	float: left;
+	position: relative;
+}
+
+.room-filter {
+	float: right;
+	border-radius: 5px;
+	border: 1px solid #8FC4E7;
+	position: relative;
+	width: 60%;
+	margin-top: 2.5%;
+	margin-right: 2.5%;
+	font-size: 15px;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	padding-left: 2%;
+}
+
+.room-filter > div {
+	float: left;
+	padding: 2% 4%;
+}
+
+.room-filter > .filter-mode {
+	margin: 0 4%;
+	width: 14%;
+	text-align: center;
+}
+
+.room-filter > .filter-item {
+	font-weight: normal;
+	border-radius: 2px;
+	font-size: 13px;
+	margin-top: 0%;
+	padding-top: 3%;
+}
+
+.filter-item:hover {
+	background-color: #9FD4F7;
+	cursor: pointer;
+}
+
+.room-list-entries {
+	position: relative;
+	clear: both;
+	background-color: white;
+	border-radius: 1.5%;
+	border: 1px solid #8FC4E7;
+	width: 94%;
+	margin-top: 10%;
+	margin-left: 3%;
+	height: 83%;
+	overflow-y: scroll;
+}
+
+.room-list-row {
+	font-size: 11px;
+	background-color: white;
+	width: 92%;
+	padding: 4%;
+	padding-top: 3.5%;
+	padding-bottom: 8%;
+	border-bottom: 1px solid #8FC4E7;
+	position: relative;
+	background-color: white;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.room-list-row:hover {
+	cursor: pointer;
+	background-color: #EAEEFF;
+}
+
+.room-list-row > span {
+	float: left;
+	text-align: center;
+}
+
+.room-list-row > span:nth-child(1) {
+	text-align-last: left;
+	width: 60%;
+}
+
+.room-list-row > span:nth-child(2) {
+	width: 15%;
+}
+
+.room-list-row > span:nth-child(3) {
+	width: 15%;
+}
+
+.room-list-row > span:nth-child(4) {
+	width: 8%;
+	margin-top: -2px;
+	color: red;
+}
+
+.selected-room {
+	background-color: #D6DAFF;
+}
+
+.selected-room:hover {
+	background-color: #D6DAFF;
+}
+
+/*
+------------------------------------
+MODE DROPDOWN
+------------------------------------
+*/
+.mode-dropdown {
+	position: absolute;
+	background-color: white;
+	border: 1px solid #8FC4E7;
+	border-radius: 5px;
+	z-index: 5;
+	list-style: none;
+	padding: 0;
+	color: #000;
+	left: 25%;
+	right: 40%;
+	top: 38%;
+	text-align: center;
+	display: none;
+}
+
+.mode-dropdown > .mode-item {
+	border-bottom: 1px solid #8FC4E7;
+	padding: 5px 0px;
+}
+
+.mode-dropdown > .mode-item:hover {
+	background-color: rgba(159,212,247,0.2);
+	cursor: pointer;
+}
+
+.mode-dropdown > .selected-mode {
+	background-color: rgba(159,212,247,0.4);;
+}
+
+.mode-dropdown > .selected-mode:hover {
+	background-color: rgba(159,212,247,0.5);
+}
+
+/*
+------------------------------------
+NO PASS CHECK
+------------------------------------
+*/
+.no-pass-check {
+	width: 11px;
+	height: 11px;
+	display: inline-block;
+	margin-bottom: -2%;
+}
+
+/*
+-------------------------------
+LOCK ICON
+-------------------------------
+*/
+.lock-icon {
+	width: 8px;
+	margin-bottom: -16%;
+}
+
+/*
+------------------------------------
+ROOM LIST BUTTONS
+------------------------------------
+*/
+
+.room-list-buttons {
+	position: absolute;
+	bottom: 2%;
+	left: 1.6%;
+	height: 8%;
+	width: 49.8%;
+	padding: 0;
+}
+
+.room-list-buttons > .button-container {
+	float: left;
+	height: 100%;
+}
+
+.create-button {
+	width: 36%;
+}
+
+.join-button {
+	width: 26%;
+}
+
+.refresh-button {
+	width: 36%;
+}
+
+.button-image2 {
+	position: relative;
+	height: 90%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button-image2:hover {
+	cursor: pointer;
+	height: 96%;
+	transform: translate(0%,-2%);
+}
+
+.disabled-button > .button-image2:hover {
+	cursor: default;
+	height: 92%;
+	transform: translate(0%,-2%);
+}
+
+
+/*
+-----------------------------------------------
+GAME STATUS PANEL
+-----------------------------------------------
+*/
+
+.game-status-panel {
+	right: 3%;
+	width: 45%;
+	height: 21.5%;
+	top: 17%;
+	padding-top: 0.4%;
+}
+
+.coin-icon {
+	width: 20%;
+	margin-bottom: -2.5%;
+}
+
+.game-status-row {
+	clear: both;
+	margin: 0 3%;
+	border-bottom: 1px solid #8FC4E7;
+	height: 23%;
+	padding: 3% 2% 0% 2%;
+	display: block;
+}
+
+.game-status-row:last-child {
+	border: none;
+}
+
+.game-status-row > .left-cell {
+	float: left;
+	font-family: "comicScript";
+	font-size: 17px;
+}
+
+.game-status-row > .right-cell {
+	float: right;
+	text-align: right;
+	font-family: "pixellari";
+	font-size: 15px;
+	margin-top: 0.8%;
+}
+
+
+/*
+-----------------------------------------------
+PLAYER STATUS PANEL
+-----------------------------------------------
+*/
+
+.player-status-panel {
+	right: 3%;
+	bottom: 13%;
+	width: 45%;
+	height: 44%;
+}
+
+.player-status-panel > .left-section {
+	float: left;
+	width: 50%;
+	height: 88%;
+	margin-top: 4.5%;
+	margin-left: 4.1%;
+	position: relative;
+}
+
+.player-status-panel .username {
+	background-color: rgba(123,157,179,0.45);
+	font-size: 16px;
+	width: 100%;
+	text-align: center;
+	padding: 6% 0%;
+	border-radius: 9999px;
+	margin-bottom: 11%;
+}
+
+.player-status-panel .player-preview {
+	background-color: rgba(255,255,255,0.6);
+	background-image: url("../UI/design1.png");
+	background-repeat: no-repeat;
+	background-position: 72% -350%;
+	background-size: 80%;
+	width: 90%;
+	padding-top: 65%;
+	border: 1px solid #8FC4E7;
+	border-radius: 15px;
+	margin: 0 auto;
+}
+
+.player-status-panel .hpmp {
+	font-size: 16px;
+	background-color: rgba(255,255,255,0.6);
+	border-radius: 9999px;
+	border: 1px solid #8FC4E7;
+	text-align: center;
+	height: 7%;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	position: absolute;
+	bottom: 0;
+	left: 5%;
+	right: 5%;
+}
+
+.player-status-panel .hp, .player-status-panel .mp {
+	width: 45%;
+	display: inline-block;
+	text-align: center;
+}
+
+.player-status-panel .hp {
+	float: left;
+	margin-left: 5%;
+}
+
+.player-status-panel .mp {
+	float: right;
+	margin-right: 5%;
+}
+
+#hp, #mp {
+	width: 50%;
+	display: inline-block;
+	text-align: left;
+	margin-left: 4%;
+}
+
+.stat-card > h3 {
+	font-family: "comicScript";
+	text-align: center;
+	padding-bottom: 14%;
+	border-bottom: 1px solid black;
+}
+
+.stat-card {
+	float: right;
+	background-color: rgba(255,255,255,0.6);
+	border: 1px solid #8FC4E7;
+	border-radius: 7px;
+	width: 32%;
+	height: 88%;
+	margin-top: 4.5%;
+	margin-right: 4.1%;
+	padding: 0% 3%;
+}
+
+.stat-row {
+	clear: both;
+	font-size: 14px;
+	height: 9%;
+	margin-bottom: 8%;
+	line-height: 170%;
+	cursor: default;
+}
+
+.stat-row:hover {
+	background-color: rgba(123,157,179,0.45);
+}
+
+.stat-row > .stat-name {
+	float: left;
+	margin-left: 3%;
+}
+
+.stat-row > .stat-value {
+	float: right;
+	margin-right: 3%;
+
+}
+
+.player-preview > .character-name {
+	position: absolute;
+	background-color: rgba(0,0,0,0.5);
+	display: block;
+	color: white;
+	top: 30%;
+	left: 10%;
+	right: 10%;
+	border-radius: 8px;
+	text-align: center;
+	font-size: 14px;
+	padding: 2px 0px;
+}
+
+.player-preview > .absolute-carousel {
+	top: 42%;
+	margin: 6%;
+}
+
+/*
+---------------------------------------
+CREATE GAME MODAL
+---------------------------------------
+*/
+
+.create-game-modal {
+	left: 6.5%;
+	top: 6.5%;
+	position: absolute;
+	width: 86%;
+	height: 86%;
+	display: none;
+}
+
+.create-game-modal > .modal-heading {
+	text-align: left;
+	margin-top: 2.5%;
+	margin-left: 3%;
+	font-size: 30px;
+	width: 93.5%;
+	padding-bottom: 2.5%;
+	border-bottom: 1px solid black;
+}
+
+.game-settings, .map-selection {
+	float: left;
+	background-color: rgba(255,255,255,0.6);
+	border: 1px solid #8FC4E7;
+	border-radius: 10px;
+	padding: 0% 3.5% 0% 3%;
+	text-align: left;
+	margin-top: 5%;
+	margin-left: 2%;
+	width: 34%;
+	height: 73%;
+	font-size: 18px;
+}
+
+.create-game-modal .subheading {
+	margin-top: -35px;
+	margin-left: -20px;
+	margin-bottom: 13%;
+	text-align: left;
+	font-size: 22px;
+}
+
+.setting-row {
+	clear: both;
+	padding-bottom: 10%;
+	width: 99%;
+	/*margin-top: -10%;*/
+	position: relative;
+}
+
+.setting-row > .setting-name {
+	float: left;
+}
+
+.setting-row > .setting-value {
+	float: right;
+	font-family: "pixellari";
+	margin-top: 1%;
+}
+
+.setting-row, .game-textfield {
+	margin-bottom: 12%;
+}
+
+/*password row*/
+.setting-row:nth-child(4n+2) { 
+	clear: both;
+	margin-bottom: 0%;
+}
+
+.setting-row:last-child {
+	margin-bottom: 15%;
+}
+
+.generate-button {
+	width: 100px;
+	height: 30px;
+
+	margin-right: -14%;
+	margin-top: -5%;
+}
+
+.game-textfield {
+	font-size: 14px;
+	margin-top: 2%;
+	width: 90%;
+	background-color: #FFF;
+	border: 1px solid #999;
+	padding: 5% 5% 5% 5%;
+	border-radius: 4px;
+	font-family: "pixellari";
+	letter-spacing: 0.5px;
+
+	/*padding-left: 10%;
+	color: transparent;
+	text-shadow: 0 0 0 black;*/
+}
+
+input.game-textfield::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #555;
+  opacity: 1.0;
+ }
+input.game-textfield::-moz-placeholder { /* Firefox 19+ */
+  color: #555;
+  opacity: 1.0;
+}
+input.game-textfield:-ms-input-placeholder { /* IE 10+ */
+  color: #555;
+  opacity: 1.0;
+}
+input.game-textfield:-moz-placeholder { /* Firefox 18- */
+  color: #555;
+  opacity: 1.0;
+}
+
+.disabled-input {
+	background-color: #CCC;
+	pointer-events: none;
+}
+
+.create-game-modal .plus-button, .create-game-modal .minus-button {
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	position: relative;
+	display: inline-block;
+}
+
+.create-game-modal .plus-button {
+	background-image: url("../UI/plus-button.png");
+	margin-left: 5px;
+	/*pointer-events:none;*/
+}
+
+.create-game-modal .minus-button {
+	background-image: url("../UI/minus-button-disabled.png");	
+	margin-right: 5px;
+}
+
+.custom-radio {
+	margin-top: -3px;
+	display: block;
+}
+
+.radio-item {
+	font-size: 15px;
+	margin-left: 10px;
+}
+
+.radio-item:hover {
+	cursor: pointer;
+}
+
+.radio-item > img {
+	width: 20px;
+	vertical-align: middle;
+}
+
+.carousel-back {
+	background-image: url("../UI/carousel-back-button.png");
+}
+
+.carousel-forward {
+	background-image: url("../UI/carousel-forward-button.png");
+}
+
+.capacity-value, .game-mode-value {
+	margin: 0px 7px;
+}
+
+.capacity-value {
+	font-size: 20px;
+}
+
+.arrow-carousel div.carousel-arrow {
+	width: 18px;
+	height: 30px;
+	vertical-align: middle;
+	position: relative;
+	display: inline-block;
+	margin-top: -5px;
+}
+
+.carousel-value {
+	text-align: center;
+	display: inline-block;
+}
+
+.game-mode-value {
+	width: 35px;
+}
+
+.capacity-value {
+	width: 22px;
+}
+
+.rank-value {
+	width: 70px;
+}
+
+
+
+
+
+/*
+MAP SELECTION ====================
+*/
+.map-selection {
+	float: right;
+	width: 46%;
+	height: 52%;
+	margin-left: 0;
+	margin-right: 2%;
+	background-image: url("../UI/shockfort-bg.png");
+	background-position: center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+.absolute-carousel {
+	position: absolute;
+	width: 9%;
+	padding-top: 15%;
+	top: 40%;
+	opacity: 0.9;
+}
+
+.absolute-carousel:hover {
+	opacity: 1.0;
+}
+
+.absolute-carousel.carousel-back {
+	left: 4%;
+}
+
+.absolute-carousel.carousel-forward {
+	right: 4%;
+}
+
+.map-selection-name {
+	position: absolute;
+	background-color: rgba(0,0,0,0.5);
+	color: white;
+	text-align: center;
+	padding: 3% 0%;
+	font-size: 24px;
+	height: 25px;
+	left: 3%;
+	right: 3%;
+	top: 5%;
+	border-radius: 5px;
+	line-height: 21px;
+}
+
+.map-selection:hover {
+	cursor: pointer;
+}
+
+.create-game-buttons {
+	position: absolute;
+	bottom: 3%;
+	right: 2%;
+	width: 42%;
+	height: 10%;
+}
+
+p.map-caption {
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	margin-bottom: -12%;
+	font-family: "pixellari";
+	font-size: 14px;
+	left: 2%;
+	right: 2%;
+	color: #333;
+	letter-spacing: 0.3px;
+	word-spacing: 3px
+}
+
+.cancel-create-button, .confirm-create-button {
+	height: 100%;
+	width: 50%;
+	/*background-color: blue;*/
+}
+
+.cancel-create-button {
+	float: left;
+}
+
+.confirm-create-button {
+	float: right;
+}
+
+
+
+
+
+
+
+

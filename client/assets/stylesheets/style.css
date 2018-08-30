@@ -1,0 +1,385 @@
+body {
+	background-color: black;
+	cursor: default;
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.main-container {
+	background-image: url('../UI/shockfort-bg.png');
+	width: 800px;
+	height: 600px;
+	margin: 0 auto;
+	background-position: center;
+	background-size: 800px;
+	background-repeat: no-repeat;
+	border: 5px solid white;
+}
+
+.page-size {
+	width: 800px;
+	height: 600px;
+}
+
+.splash-screen {
+	position: relative;
+}
+
+.shockfort-logo {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10%;
+    margin-bottom: 6%;
+    width: 45%;
+}
+
+.button {
+	position: absolute;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 90%;
+}
+
+.login-button, .sign-up-button {
+	width:17%;
+	height: 10%;
+	top: 1.5%;
+}
+
+.login-button {
+	left: 1%;
+	background-image: url("../UI/login-button.png");
+}
+
+.sign-up-button {
+	right: 1%;
+	background-image: url("../UI/sign-up-button.png");
+}
+
+.button:hover {
+	background-size: 97%;
+	cursor: pointer;
+}
+
+.center-buttons {
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	/*background-color: orange;*/
+	height: 60%;
+}
+
+.button-container {
+	position: relative;
+	margin: 0 auto;
+}
+
+.play-button {
+	width: 30%;
+	height: 35%;
+}
+
+.quick-play-button {
+	width: 24%;
+	height: 23%;
+}
+
+.how-to-play-button {
+	width: 26%;
+	height: 23%;
+}
+
+.button-image {
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+}
+
+.button-image:hover {
+	width: 97%;
+	cursor: pointer;
+	transform: translate(0%, -3%);
+}
+
+.switch-icon {
+	position: absolute;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 85%;
+	width: 5%;
+	padding-top: 5%;
+}
+
+.switch-icon:hover {
+	cursor: pointer;
+	width: 6%;
+	padding-top: 6%;
+}
+
+.music-on-icon {
+	background-image: url("../UI/music-on-icon.png");
+	bottom: 4%;
+	left: 4%;
+}
+
+.music-on-icon:hover {
+	bottom: 3.5%;
+	left: 3.5%;
+}
+
+.sound-on-icon {
+	background-image: url("../UI/sound-on-icon.png");
+	bottom: 4%;
+	left: 13%;
+}
+
+.sound-on-icon:hover {
+	bottom: 3.5%;
+	left: 12.5%;
+}
+
+.shop-button {
+	background-image: url("../UI/shop-button-disabled.png");
+	background-position: center;
+	background-size: 95%;
+	bottom: 2%;
+	right: 2%;
+	width: 14%;
+	padding-top: 7.5%;
+}
+
+.shop-button:hover {
+	cursor: default;
+}
+
+.switch-icon > img.icon-cross {
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	width: 90%;
+	height: 90%;
+	opacity: 0.0;
+}
+
+/*
+--------------------------------------------------------------
+Login Modal
+--------------------------------------------------------------
+*/
+
+.modal-close-icon {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 15px;
+}
+
+.modal-close-icon:hover {
+	cursor: pointer;
+}
+
+.modal-screen {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: black;
+	opacity: 0.0;
+	z-index: 10;
+	display: none;
+}
+
+@font-face {
+    font-family: comicScript;
+    src: url("../fonts/sf-comic-script/SFComicScript.ttf");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: comicScript;
+    src: url("../fonts/sf-comic-script/SFComicScript-Bold.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+	font-family: vcr;
+	src: url("../fonts/vcr-osd/vcr-osd.ttf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: pixellari;
+	src: url("../fonts/pixellari/Pixellari.ttf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: system;
+	src: url("../fonts/system/System.fon");
+}
+
+.modal {
+	position: absolute;
+	top: 50px;
+	font-family: comicScript;
+	letter-spacing: -0.07em;
+	font-weight: normal;
+	background-color: rgba(255,255,255,0.9);
+	border: 0.25em solid black;
+	border-radius: 1em;
+	width: 38%;
+	height: 55%;
+	left: 31%;
+	right: 31%;
+	text-align: center;
+	z-index: 15;
+}
+
+.modal > h1 {
+	font-size: 2.7em;
+	margin: 0.6em 0 0.5em 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.modal > form > input {
+	position: relative;
+	border: 1px solid #666;
+	background-color: white;
+	color: black;
+	padding: 16px;
+	border-radius: 5px;
+	font-family: "pixellari";
+	font-size: 14px;
+	line-height: 14px;
+	vertical-align: bottom;
+	font-weight: normal;
+	width: 68%;
+	margin-bottom: 6%;
+}
+
+.modal > form > input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #555;
+ }
+.modal > form > input::-moz-placeholder { /* Firefox 19+ */
+  color: #555;
+}
+.modal > form > input:-ms-input-placeholder { /* IE 10+ */
+  color: #555;
+}
+.modal > form > input:-moz-placeholder { /* Firefox 18- */
+  color: #555;
+}
+
+.login-modal-button {
+	width: 42%;
+	position: absolute;
+	bottom: 30px;
+	left: 29%;
+	right: 29%;
+}
+
+.login-modal {
+	display: none;
+}
+
+.login-modal-button > .button-image:hover {
+	transform: translate(0%, 2%);
+}
+
+/*
+--------------------------------------------------------------
+Sign Up Modal
+--------------------------------------------------------------
+*/
+
+.sign-up-modal {
+	height: 76%;
+	display: none;
+}
+
+.register-modal-button {
+	width: 42%;
+	position: absolute;
+	bottom: 30px;
+	left: 29%;
+	right: 29%;
+}
+
+.register-modal-button > .button-image:hover {
+	transform: translate(0%, 2%);
+}
+
+/*
+--------------------------------------------------------------
+Instructions Modal
+--------------------------------------------------------------
+*/
+
+.instructions-modal {
+	width: 80%;
+	height: 90%;
+	top: 4.2%;
+	left: 4.2%;
+	padding: 0% 5%;
+	display: none;
+}
+
+.instructions-modal > .modal-heading {
+	text-align: left;
+}
+
+.instructions-text {
+	font-family: "pixellari";
+	text-align: left;
+	font-size: 140%;
+	line-height: 140%;
+}
+
+/*
+--------------------------------------------------------------
+Alert Modal
+--------------------------------------------------------------
+*/
+
+.alert-box {
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	left: 0;
+	width: 0%;
+	height: 0%;
+	z-index: 20;
+	display: none;
+	border: none;
+	color: white;
+	background-color: black;
+	padding: 5%;
+	font-size: 200%;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+/*
+--------------------------------------------------------------
+Modal Animations
+--------------------------------------------------------------
+*/
