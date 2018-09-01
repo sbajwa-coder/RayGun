@@ -1,98 +1,78 @@
-function Character(model, spritesheet, spriteData, startImage){
-	/*Info about the model*/
-	this.model = model; //name of the model
-	this.spritesheet = spritesheet;
-	this.spriteData = spriteData;
-	this.startImage = startImage || 'tile000.png';
+const MIN_DAMAGE = 1;
+const OVER_HEAL = 1.2;
 
+function Character(model){
+	this.key = model;
 
-	/*Stats*/
-	this.str = 100; //see what kind of stats we need
-	this.speed = 3;
-	this.defense = 50;
-	this.hp = 100;
-	this.mp = 100;
-	this.stam = 100; //see if we need this	
+	this.stats = {HP:100};
+
+	this.maxHP = 100;
+	this.maxMP = 100;
+	this.HP = this.maxHP;
+	this.MP = this.maxMP;
+
+	this.mass = 100; //what value
+	this.defense = 100;
+	this.meleeGuard = 0.5;
+	this.magicGuard = 0.25;
+	this.rangeGuard = 0.25;
+
+	this.attackPower = 100;
+	this.attackSpeed = 5;
+	this.movementSpeed = 5;
 }
 
 /***********************Setters***********************/
-/*position based*/
-Character.prototype.setX = function(x){
-	this.x = x;
-}
-
-Character.prototype.setY = function(y){
-	this.y = y;
-}
-
-Character.prototype.setAngle = function(angle){
-	this.angle = angle;
-}
-
 /*Stats based*/
 Character.prototype.heal = function(health){
-	this.hp += health;
+	let recover = this.HP + health;
+	if (recover > (this.maxHP * OVER_HEAL)) recover = this.maxHP;
+	
+	this.HP = recover;
 }
 
-//need some math for damage
-Character.prototype.takeDamage = function(hit){
-	this.hp -= hit*(this.defense/100);
+Character.prototype.takeDamage = function(attack){
+	let guard = this.meleeGuard;
+
+	if (attack.type === 'MAGIC'){
+		guard = this.magicGuard;
+	}else if (attack.type === 'RANGE'){
+		guard = this.rangeGuard;
+	}
+
+	//let damage = attack.damage - (((defense*guard)/100)*attack.damage)
+	let damage = attack.damage-(this.defense * this.guard);
+	if (damage < MIN_DAMAGE) damage = MIN_DAMAGE;
+
+	this.HP -= damage;
 }
 
-Character.prototype.useMana = function(consume){
-	this.mp -= consume;
+Character.prototype.useMana = function(mana){
+	let consume = this.MP - mana
+	if (consume < 0) consume = 0;
+
+	this.MP = consume;
 }
 
-Character.prototype.recoverMana = function(recover){
-	this.mp += recover;
-}
+Character.prototype.recoverMana = function(mana){
+	let recover = this.MP + mana;
+	if (recover > this.maxMP) recover = this.maxMP;
 
-Character.prototype.useStamina = function(consume){
-	this.stam -= consume
-}
-
-Character.prototype.recoverStamina = function(recover){
-	this.stam += recover
+	this.MP = recover;
 }
 
 /***********************Getters***********************/
-/*Model based*/
-Character.prototype.getModel = function(){
-	return this.model;
-}
-
-Character.prototype.getImage = function(){
-	return this.image;
-}
-
-Character.prototype.getStartImage = function(){
-	return this.startImage;
-}
-
-/*Position based*/
-Character.prototype.getX = function(){
-	return this.x;
-}
-
-Character.prototype.getY = function(){
-	return this.y;
-}
-
-Character.prototype.getAngle = function(){
-	return this.angle;
+Character.prototype.getKey = function(){
+	return this.key;
 }
 
 /*Stats based*/
-Character.prototype.getHp = function(){
-	return this.hp;
+Character.prototype.getHP = function(){
+	return this.HP;
 }
 
 Character.prototype.getMP = function(){
-	return this.mp
-}
-
-Character.prototype.getStamina = function(){
-	return this.stam;
+	return this.MP;
 }
 
 export default Character;

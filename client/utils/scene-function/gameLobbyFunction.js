@@ -3,23 +3,23 @@ function gameLobbyFunction(lobbyScene){
 
 	/*Character Related*/
 	this.addPlayer = function(player){
-		let characterData = scene.cache.json.get(player.character.model+'_body');
+		let characterData = scene.cache.json.get(player.character.key+'_BODY');
 
 		/*Create the matter object(sprite) for player*/
-		let playerSprite = scene.matter.add.sprite(player.character.x, player.character.y, 
-			player.character.model, player.character.startImage,
-			{shape:characterData[player.character.model]/*fixed tile*/});
+		let playerSprite = scene.matter.add.sprite(player.x, player.y, 
+			player.character.key, 'tile000.png',
+			{shape:characterData['warrior']/*fixed tile*/});
 
-		playerSprite.angle = player.character.angle;
-		playerSprite.rotation = player.character.rotation;
+		playerSprite.angle = player.angle;
+		playerSprite.rotation = player.rotation;
 		playerSprite.on('animationupdate',this.frameHitboxUpdate,scene);
 
 		/*Create a Player Object for new player*/
 		let newPlayer = {
 			joinID: player.joinID,
 			username: player.username,
-			sprite: playerSprite
-			//need to add stats
+			sprite: playerSprite,
+			
 		}
 
 		/*Add the new player to list and group for tracking purpose*/
@@ -107,7 +107,7 @@ function gameLobbyFunction(lobbyScene){
 	    scene.matter.world.setBounds(0,0,bg.width,bg.height);
 
 	    /*Make the terminal*/
-	   	let terminal = scene.matter.add.sprite(500,500,'warrior','tile000.png').setInteractive({ cursor: 'pointer' });
+	   	let terminal = scene.matter.add.sprite(500,500,'CHAR_WARRIOR','tile000.png').setInteractive({ cursor: 'pointer' });
 
 	    terminal.on('pointerdown', function(pointer){
 	    	alert($(document));

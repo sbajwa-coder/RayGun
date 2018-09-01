@@ -12,9 +12,11 @@ class GameLobbyScene extends Phaser.Scene{
 
 	preload(){
 		/*load the character spritesheet*/
+		this.load.atlas('CHAR_WARRIOR', '/assets/sprites/characters/warrior/cur/run/spritesheet.png',
+			'/assets/sprites/characters/warrior/cur/run/spritesheet.json');
 		this.load.atlas('warrior', '/assets/sprites/characters/warrior/cur/run/spritesheet.png',
 			'/assets/sprites/characters/warrior/cur/run/spritesheet.json');
-		this.load.json('warrior_body','assets/sprites/characters/warrior/cur/run/warrior_body.json');
+		this.load.json('CHAR_WARRIOR_BODY','assets/sprites/characters/warrior/cur/run/warrior_body.json');
 
 		this.load.atlas('warrior_attack', '/assets/sprites/characters/warrior/cur/basic-attack1/spritesheet.png',
 			'/assets/sprites/characters/warrior/cur/basic-attack1/spritesheet.json');

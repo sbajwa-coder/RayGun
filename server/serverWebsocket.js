@@ -136,17 +136,17 @@ function ServerWebsocket(){
     let createdPlayer = new player(Math.floor(Math.random()*700)+50/*random ID*/, data.username /*Random username*/);
     createdPlayer.changeTeam(team);
     createdPlayer.joinLobby(gameID, joinID);
-    createdPlayer.character.x = x;
-    createdPlayer.character.y = y;
+    createdPlayer.x = x;
+    createdPlayer.y = y;
 
     return createdPlayer;
   }
 
   function uMove(data){//temp
-    gameList[data.gameID].players[data.playerID].character.x = data.x;
-    gameList[data.gameID].players[data.playerID].character.y = data.y;
-    gameList[data.gameID].players[data.playerID].character.angle = data.angle;
-    gameList[data.gameID].players[data.playerID].character.rotation = data.rotation;
+    gameList[data.gameID].players[data.playerID].x = data.x;
+    gameList[data.gameID].players[data.playerID].y = data.y;
+    gameList[data.gameID].players[data.playerID].angle = data.angle;
+    gameList[data.gameID].players[data.playerID].rotation = data.rotation;
   }
 }
 

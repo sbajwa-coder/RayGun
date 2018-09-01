@@ -3,23 +3,29 @@ import warrior from '../characters/warriorModel.js'
 function Player(id, username){
 	this.id = id;
 	this.username = username;
-	this.character = warrior();
+	this.character = new warrior();
+	this.status = 'LOBBY';
+
 	this.team = 'none';
-	this.status = 'lobby';
 	this.gameID = 0;
 	this.joinID = 0;
+
+	this.x = 0;
+	this.y = 0;
+	this.angle = 0;
+	this.rotation = 0;
 }
 
 Player.prototype.joinLobby = function(gameID, joinID){
 	this.gameID = gameID;
 	this.joinID = joinID;
-	this.status = 'gameLobby';
+	this.status = 'GAME_LOBBY';
 }
 
 Player.prototype.leaveLobby = function(){
 	this.gameID = 0;
 	this.joinID = 0;
-	this.status = 'lobby';
+	this.status = 'GAME_LOBBY';
 	this.team = 'none';
 }
 

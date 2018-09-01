@@ -20,7 +20,7 @@ var config = {
 			}
 		}
 	},
-	scene: [TitleScene,LobbyScene,GameLobbyScene,testScene]
+	scene: [/*TitleScene,LobbyScene,*/GameLobbyScene,testScene]
 };
 
 const game = new Phaser.Game(config);
