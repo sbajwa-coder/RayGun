@@ -4,7 +4,7 @@ function gameLobbyFunction(lobbyScene){
 	/*Character Related*/
 	this.addPlayer = function(player){
 		let characterData = scene.cache.json.get(player.character.key+'_BODY');
-
+		
 		/*Create the matter object(sprite) for player*/
 		let playerSprite = scene.matter.add.sprite(player.x, player.y, 
 			player.character.key, 'tile000.png',
@@ -19,7 +19,7 @@ function gameLobbyFunction(lobbyScene){
 			joinID: player.joinID,
 			username: player.username,
 			sprite: playerSprite,
-			
+			stats: player.character.stats
 		}
 
 		/*Add the new player to list and group for tracking purpose*/
@@ -41,9 +41,10 @@ function gameLobbyFunction(lobbyScene){
 
 	this.movePlayer = function(data){
 		let player = scene.playerList[data.joinID].sprite;
+		let playerStats = scene.playerList[data.joinID].stats;
 
-		let opposite = Math.sin(player.rotation) * 3; //change to player speed
-		let adjacent = Math.cos(player.rotation) * 3;
+		let opposite = Math.sin(player.rotation) * playerStats.movementSpeed; //change to player speed
+		let adjacent = Math.cos(player.rotation) * playerStats.movementSpeed;
 
 		switch (data.action) {
 			case 'ArrowLeft':
