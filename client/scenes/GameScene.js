@@ -7,7 +7,8 @@ class gameScene extends Phaser.Scene{
 
 	preload(){}
 
-	create(){}
+	create(){
+	}
 }
 
 export default gameScene;

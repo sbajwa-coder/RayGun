@@ -1,3 +1,6 @@
+const BACKWARD_SPEED = 0.5;
+const IDLE_FRAME = 'tile000.png';
+
 function gameLobbyFunction(lobbyScene){
 	let scene = lobbyScene;
 
@@ -7,7 +10,7 @@ function gameLobbyFunction(lobbyScene){
 		
 		/*Create the matter object(sprite) for player*/
 		let playerSprite = scene.matter.add.sprite(player.x, player.y, 
-			player.character.key, 'tile000.png',
+			player.character.key, IDLE_FRAME,
 			{shape:characterData['warrior']/*fixed tile*/});
 
 		playerSprite.angle = player.angle;
@@ -62,8 +65,8 @@ function gameLobbyFunction(lobbyScene){
 				break;
 
 			case 'ArrowDown':
-				player.x += opposite * 0.5; //0.5 to decrease the speed
-				player.y -= adjacent * 0.5;
+				player.x += opposite * BACKWARD_SPEED; //0.5 to decrease the speed
+				player.y -= adjacent * BACKWARD_SPEED;
 				player.anims.play('warriorBackwardsWalk',true);
 				break;
 
@@ -73,7 +76,7 @@ function gameLobbyFunction(lobbyScene){
 
 			case 'Stop':
 				player.anims.stop();
-				player.setFrame('tile000.png');
+				player.setFrame(IDLE_FRAME);
 				break;
 
 			default:
@@ -108,10 +111,11 @@ function gameLobbyFunction(lobbyScene){
 	    scene.matter.world.setBounds(0,0,bg.width,bg.height);
 
 	    /*Make the terminal*/
-	   	let terminal = scene.matter.add.sprite(500,500,'CHAR_WARRIOR','tile000.png').setInteractive({ cursor: 'pointer' });
+	   	let terminal = scene.matter.add.sprite(500,500,'CHAR_WARRIOR',IDLE_FRAME).setInteractive({ cursor: 'pointer' });
 
 	    terminal.on('pointerdown', function(pointer){
 	    	alert($(document));
+	    	//scene.scene.start('gameScene');
 		});
 	}
 
