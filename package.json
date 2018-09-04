@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "full-build": "rm -rf dist && npm run copy",
+    "full-start": "npm run build-parcel && npm run start",
+    "start2": "npm run web-parcel & npm run start",
     "copy": "mkdir dist && cp -r -f client/assets dist/assets",
     "replace": "cp -rf client/assets dist",
     "parcel": "node node_modules/parcel-bundler/bin/cli.js",
