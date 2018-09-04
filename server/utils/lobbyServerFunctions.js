@@ -1,5 +1,6 @@
 import warrior from '../../client/game-objects/characters/warriorModel.js';
 import player from '../../client/game-objects/player/player.js';
+import gameObject from '../../client/game-objects/game/gameObject.js';
 import serverMessages from './serverMessages.js';
 
 function lobbyServerFunctions(server){
@@ -8,24 +9,21 @@ function lobbyServerFunctions(server){
 
   this.joinGame = function(ws,data){
     let gameID = data.gameID;
+    let newPlayer = this.createUser(data); //temp function to set up user
 
     /*Check if game with gameID exists and has space*/
     if (gameID <= webserver.gameNumber && gameID > 0){
       if (webserver.gameList[gameID].capacity > 0){
-        
-        /*Create and ID and make user for the new player*/
+        /*New character transmit*/
         let joinID = webserver.gameList[gameID].playerNumber +=1;
-        let newPlayer = this.createUser(data, joinID, gameID); //temp function to set up user
-
-        /*Add new player to the game*/
-        webserver.gameList[gameID].players[joinID] = newPlayer; //need to add a fix for when a player leaves the game
-        webserver.gameList[gameID].sockets[joinID] = ws;
-
         message.sendWorld(gameID, joinID, ws);
+
+        /*make the change to all*/
+        webserver.gameList[gameID].joinGame(newPlayer,ws);
         message.sendPlayerUpdate(gameID, newPlayer);
 
       }else{
-        console.log("Yo somethings up in gameLobby fam!!!!!?")
+        console.log("Yo somethings up in gameLobby fam!!!!!?"); //not able to join the game
       }
     }else {
       console.log("Yo what game you tryna join guy?")
@@ -37,22 +35,15 @@ function lobbyServerFunctions(server){
     let joinID =  data.joinID;
 
     /*Delete the player and socket from the list of players*/
-    delete webserver.gameList[gameID].players[joinID];
-    delete webserver.gameList[gameID].sockets[joinID];
-
+    webserver.gameList[gameID].leaveGame(joinID);
     message.sendPlayerRemove(gameID, joinID);
   }
 
-  this.createUser = function(data, joinID, gameID){
-    /*Player should not be created here*/
-    //temp team create
-    let team = (Math.floor(Math.random()*2)==0)? 'red':'blue';
+  this.createUser = function(data){
     let x = Math.floor(Math.random()*700)+50;
     let y = Math.floor(Math.random()*500)+50;
 
     let createdPlayer = new player(Math.floor(Math.random()*700)+50/*random ID*/, data.username /*Random username*/);
-    createdPlayer.changeTeam(team);
-    createdPlayer.joinLobby(gameID, joinID);
     createdPlayer.x = x;
     createdPlayer.y = y;
 
@@ -60,18 +51,8 @@ function lobbyServerFunctions(server){
   }
   
   this.createGame = function(){
-    //idea to fix players leaving:
-        //decrease capacity and use it as a way to tell how many players can join
-        //rename numPlayers (already did) to next id or something like that so that it assigns an id 
-        //for the next player
     webserver.gameNumber+=1;
-    webserver.gameList[webserver.gameNumber] = {
-      id: webserver.gameNumber,
-      capacity: 6,
-      playerNumber: 0,
-      players: {},
-      sockets: {}
-    };
+    webserver.gameList[webserver.gameNumber] = new gameObject(webserver.gameNumber, 6);
   }
 
   this.movementUpdate = function(data){//temp
@@ -79,6 +60,33 @@ function lobbyServerFunctions(server){
     webserver.gameList[data.gameID].players[data.playerID].y = data.y;
     webserver.gameList[data.gameID].players[data.playerID].angle = data.angle;
     webserver.gameList[data.gameID].players[data.playerID].rotation = data.rotation;
+  }
+
+  this.changeSetting = function(data){
+    let gameID = data.gameID;
+    let self = this;
+
+    switch (data.setting) {
+      case 'CHANGE_MAP':
+        webserver.gameList[gameID].map = data.map;
+        break;
+
+      case 'CHANGE_GAME_MODE':
+        webserver.gameList[gameID].gameMode = data.gameMode;
+        break;
+
+      /*case 'CHANGE_PLAYER_TEAM':
+        webserver.gameList[gameID].leaveTeam();
+        webserver.gameList[gameID].joinTeam(data.team);
+        break;*/
+
+      case 'KICK_PLAYER':
+        self.leaveGame(data);
+        break;
+
+      default:
+        break;
+    }
   }
 }
 

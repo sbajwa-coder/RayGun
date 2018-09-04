@@ -1,4 +1,5 @@
 const BACKWARD_SPEED = 0.5;
+const ANGLE_SPEED = 7;
 const IDLE_FRAME = 'tile000.png';
 
 function gameLobbyFunction(lobbyScene){
@@ -51,11 +52,11 @@ function gameLobbyFunction(lobbyScene){
 
 		switch (data.action) {
 			case 'ArrowLeft':
-				player.angle-=3;
+				player.angle-=ANGLE_SPEED;
 				break;
 
 			case 'ArrowRight':
-				player.angle+=3;
+				player.angle+=ANGLE_SPEED;
 				break;
 
 			case 'ArrowUp':
@@ -114,8 +115,8 @@ function gameLobbyFunction(lobbyScene){
 	   	let terminal = scene.matter.add.sprite(500,500,'CHAR_WARRIOR',IDLE_FRAME).setInteractive({ cursor: 'pointer' });
 
 	    terminal.on('pointerdown', function(pointer){
-	    	alert($(document));
-	    	//scene.scene.start('gameScene');
+	    	//alert($(document));
+	    	scene.scene.launch('testScene',{client:scene.client, players:scene.playerList});
 		});
 	}
 

@@ -1,9 +1,9 @@
-function gameObject(){
-	this.gameID = 0;
+function gameObject(gameID, capacity){
+	this.gameID = gameID;
 	this.gameMode = 'FFA';
 	this.gameMap = 'map_template';
 
-	this.capacity = 0;
+	this.capacity = capacity;
 	this.playerNumber = 0;
 	this.numberTeams = 0;
 	this.teamCapacities = {};
@@ -15,25 +15,15 @@ function gameObject(){
 }
 
 gameObject.prototype.joinGame = function(player, ws){
-	let joinStatus = false;
+	player.joinLobby(this.gameID, this.playerNumber);
+	this.capacity -= 1;
 
-	if (this.capacity > 0){
-		let joinID = this.playerNumber +=1;
+	this.players[this.playerNumber] = player;
+	this.sockets[this.playerNumber] = ws;
 
-		player.joinLobby(this.gameID, joinID);
-		this.capacity -= 1;
-
-		this.players[joinID] = player;
-		this.sockets[joinID] = ws;
-
-		if (this.numberTeams > 0){
-			this.joinTeam(player);
-		}
-
-		joinStatus = true;
+	if (this.numberTeams > 0){
+		this.joinTeam(player);
 	}
-
-	return joinStatus;
 }
 
 gameObject.prototype.leaveGame = function(joinID){

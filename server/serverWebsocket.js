@@ -63,18 +63,7 @@ function ServerWebsocket(){
 
   /**temp stuff**/
   this.makeGame = function(){
-    //idea to fix players leaving:
-        //decrease capacity and use it as a way to tell how many players can join
-        //rename numPlayers (already did) to next id or something like that so that it assigns an id 
-        //for the next player
-    this.gameNumber+=1;
-    this.gameList[this.gameNumber] = {
-      id: this.gameNumber,
-      capacity: 6,
-      playerNumber: 0,
-      players: {},
-      sockets: {}
-    };
+    lobbyFunction.createGame();
   }
 }
 
