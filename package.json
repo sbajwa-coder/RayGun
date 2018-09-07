@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "full-build": "rm -rf dist && npm run copy && npm run build-parcel",
+    "assets": "cp -rf client/assets dist",
     "copy": "mkdir dist && cp -r client/assets dist/assets",
     "parcel": "node node_modules/parcel-bundler/bin/cli.js",
     "build-parcel": "npm run parcel build client/index.html --public-url ./",
@@ -17,7 +19,12 @@
   "author": "Julius & Shayan",
   "license": "ISC",
   "dependencies": {
+    "animate.css": "^3.7.0",
+    "bounce.js": "^0.8.2",
+    "http-server": "^0.11.1",
+    "jquery": "^3.3.1",
     "parcel-bundler": "^1.9.7",
+    "perfect-scrollbar": "^1.4.0",
     "phaser": "^3.11.0",
     "ws": "*"
   },

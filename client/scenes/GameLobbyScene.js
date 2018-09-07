@@ -1,7 +1,7 @@
 import client from '../utils/clientWebsocket.js';
-import sceneFunction from '../utils/scene-function/gameLobbyFunction.js'
-import characterAnims from '../utils/animation/characterAnims.js'
-import keybindings from '../game-objects/player/keybindings.js'
+import sceneFunction from '../utils/scene-function/gameLobbyFunction.js';
+import characterAnims from '../utils/animation/characterAnims.js';
+import keybindings from '../game-objects/player/keybindings.js';
 
 const CHAR_WARRIOR_RUN = '/assets/sprites/characters/warrior/cur/run/';
 const CHAR_WARRIOR_ATTACK = '/assets/sprites/characters/warrior/cur/basic-attack1/';
@@ -9,7 +9,7 @@ const CHAR_WARRIOR_ATTACK = '/assets/sprites/characters/warrior/cur/basic-attack
 class GameLobbyScene extends Phaser.Scene{
 	constructor(){
 		super({
-			key: 'gameLobbyScene'
+			key: 'GameLobbyScene'
 		});
 	}
 
@@ -48,7 +48,7 @@ class GameLobbyScene extends Phaser.Scene{
 
 	update(){
 		/*Check if the camera is following a player*/
-	    if (this.viewedPlayer<=0){
+	    if ( /*this.playerList &&*/ this.viewedPlayer<=0){
 	    	this.sceneFunction.followPlayer(this.joinID);
 	    }
 

@@ -1,0 +1,207 @@
+<div class="lobby-page page-size" id="lobbyPage">
+	<div class="alert-box modal"></div>
+	<div class="modal-screen"></div>
+
+	<div class="top-left">
+		<div class="music-on-icon switch-icon">
+			<img src="../assets/UI/cross-out-icon.png" alt="off" class="icon-cross"></div>
+		<div class="sound-on-icon switch-icon">
+			<img src="../assets/UI/cross-out-icon.png" alt="off" class="icon-cross"></div>
+	</div>
+
+	<div class="shop-button button"></div>
+
+	<div class="button-container logout-button">
+		<img src="../assets/UI/logout-button.png" alt="logout" class="button-image">
+	</div>
+
+	<img src="../assets/UI/shockfort-logo.png" alt="shockfort" class="shockfort-logo lobby-logo">
+
+	<div class="room-list-table lobby-module">
+		<h3 class="room-list-heading">Room List</h2>
+
+		<div class="room-filter">
+			<div>Filter:</div>
+			<div class="filter-mode filter-item">mode</div>
+			<ul class="mode-dropdown">
+				<li class="mode-item selected-mode">any</li>
+				<li class="mode-item">FFA</li>
+				<li class="mode-item">CTF</li>
+				<li class="mode-item">TDM</li>
+			</ul>
+			<div class="filter-no-pass filter-item no-pass-unselected">
+				<span>no pass</span>
+				<span>
+					<img class="no-pass-check" id="noPassCheck" 
+					src="../assets/UI/unchecked-icon.png" alt="off">
+				</span>
+			</div>
+		</div>
+
+		<div class="room-list-entries" id="roomList">
+			<!-- <div class="room-list-row">
+				<span class="title">Game name ova here!</span>
+				<span class="player-count">9/10</span>
+				<span class="game-mode">FFA</span>
+				<span class="locked">
+					<img class="lock-icon" src="../assets/UI/unlocked-icon.png" alt="unlock">
+				</span>
+			</div> -->
+		</div>
+	</div>
+
+	<div class="room-list-buttons">
+		<div class="create-button button-container">
+			<img src="../assets/UI/create-button.png" alt="create" 
+			class="button-image2 modal-trigger trigger-createGame">
+		</div>
+
+		<div class="join-button button-container disabled-button">
+			<img src="../assets/UI/join-button-disabled.png" alt="create" class="button-image2">
+		</div>
+
+		<div class="refresh-button button-container">
+			<img src="../assets/UI/refresh-button.png" alt="create" class="button-image2">
+		</div>
+	</div>
+
+	<div class="lobby-module game-status-panel">
+		<div class="game-status-row">
+			<span class="left-cell">
+				<span id="onlineUsersCount">238</span> People Online</span>
+			<span class="right-cell">
+				<img src="../assets/UI/coin-icon.png" alt="coin" class="coin-icon">
+				<span id="coinCount">92837</span>
+			</span>
+		</div>
+		<div class="game-status-row">
+			<span class="left-cell">
+				<span id="activeGamesCount">22</span> Active Games
+			</span>
+			<span class="right-cell">
+				CTF: <span id="ctfCount">12</span>
+				TDM: <span id="tdmCount">5</span>
+				FFA: <span id="ffaCount">5</span>
+			</span>
+		</div>
+		<div class="game-status-row">
+			<span class="left-cell">Last Signed In</span>
+			<span class="right-cell"><span id="lastSignIn">January 1st 2018</span></span>
+		</div>
+	</div>
+
+	<div class="lobby-module player-status-panel">
+		<div class="left-section">
+			<div class="username" id="username">Some_username_23</div>
+			<div class="player-preview">
+				<div class="absolute-carousel carousel-back button"></div>
+				<div class="character-name">design1</div>
+				<div class="absolute-carousel carousel-forward button"></div>
+			</div>
+			<div class="hpmp">
+				<span class="hp">HP:<span style="color:#00A000;" id="hp">100</span></span>
+				<span class="mp">MP:<span style="color:#0059B2;" id="mp">100</span></span>
+			</div>
+		</div>
+		<div class="stat-card">
+			<h3>STATS</h3>
+			<div class="stat-row">
+				<span class="stat-name">Kills</span>
+				<span class="stat-value" id="killCount">258</span>
+			</div>
+			<div class="stat-row">
+				<span class="stat-name">Deaths</span>
+				<span class="stat-value" id="deathCount">258</span>
+			</div>
+			<div class="stat-row">
+				<span class="stat-name">KDR</span>
+				<span class="stat-value" id="killDeathRatio">1.0</span>
+			</div>
+			<div class="stat-row">
+				<span class="stat-name">Rank</span>
+				<span class="stat-value" id="rank">Recruit</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal create-game-modal modal-hidden" id="createGameModal">
+		<img src="../assets/UI/modal-close-icon.png" alt="close" class="modal-close-icon">
+		<h1 class="modal-heading">Create Game</h1>
+
+		<div class="game-settings">
+			<h3 class="subheading">Settings</h3>
+
+			<div class="setting-row">
+				<span class="setting-name">Game Name</span>
+				<span class="setting-value">
+					<div class="button-container generate-button">
+						<img src="../assets/UI/generate-button.png" alt="" class="button-image2">
+					</div>
+				</span>
+			</div>
+			<input type="text" id="gameName" class="game-textfield game-name" placeholder="game name">
+			<div class="setting-row">
+				<span class="setting-name">Game Mode</span>
+				<span class="setting-value">
+					<span class="arrow-carousel" id="gameModeCarousel">
+						<div class="carousel-arrow carousel-back button"></div>
+						<span class="game-mode-value carousel-value" id="gameModeValue">FFA</span>
+						<div class="carousel-arrow carousel-forward button"></div>
+					</span>
+				</span>
+			</div>
+			<div class="setting-row">
+				<span class="setting-name">Capacity</span>
+				<span class="setting-value">
+					<span class="arrow-carousel" id="capacityCarousel">
+						<div class="carousel-arrow carousel-back button"></div>
+						<span class="capacity-value carousel-value" id="capacityValue">6</span>
+						<div class="carousel-arrow carousel-forward button"></div>
+					</span>
+				</span>
+			</div>
+			<div class="setting-row">
+				<span class="setting-name">Password</span>
+				<span class="setting-value">
+					<span class="custom-radio" id="passwordRadio">
+						<span class="radio-item" id="yesPassword">
+							Yes <img src="../assets/UI/radio-button-off.png" alt="Y">
+						</span>
+						<span class="radio-item" id="noPassword">
+							No <img src="../assets/UI/radio-button-on.png" alt="N">
+						</span>
+					</span>
+				</span>
+			</div>
+			<input type="text" id="gamePassword" class="game-textfield game-password disabled-input" placeholder="password">
+			<div class="setting-row">
+				<span class="setting-name">Minimum Rank</span>
+				<span class="setting-value">
+					<span class="value-carousel" id="rankCarousel">
+						<div class="minus-button button"></div>
+						<span class="rank-value carousel-value" id="rankValue">Recruit</span>
+						<div class="plus-button button"></div>
+					</span>
+				</span>
+			</div>
+		</div>
+
+		<div class="map-selection" id="mapSelection">
+			<div class="map-selection-name" id="mapSelectionName">SHOCKFORT</div>
+			<div class="absolute-carousel carousel-back button"></div>
+			<h3 class="subheading">Choose A Stage</h3>
+			<div class="absolute-carousel carousel-forward button"></div>
+			<p class="map-caption" id="mapCaption">There would be some sort of map caption here.
+			Maybe some statistics as well idk.</p>
+		</div>
+
+		<div class="create-game-buttons">
+			<div class="button-container cancel-create-button">
+				<img id="createCancel" src="../assets/UI/cancel-button.png" alt="cancel" class="button-image2">
+			</div>
+			<div class="button-container confirm-create-button">
+				<img id="createConfirm" src="../assets/UI/create-button.png" alt="cancel" class="button-image2">
+			</div>
+		</div>
+	</div>
+</div>
