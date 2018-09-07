@@ -30,7 +30,7 @@ class GameLobbyScene extends Phaser.Scene{
 		/*store information about the game*/
 		this.joinID = 0;
 		this.gameID = 0;
-		this.playerList = {}
+		this.playerList = {};
 		this.playerGroup = this.add.group();
 		this.viewedPlayer = 0;
 
@@ -48,7 +48,7 @@ class GameLobbyScene extends Phaser.Scene{
 
 	update(){
 		/*Check if the camera is following a player*/
-	    if ( /*this.playerList &&*/ this.viewedPlayer<=0){
+	    if ( this.playerList[this.joinID] && this.viewedPlayer<=0){
 	    	this.sceneFunction.followPlayer(this.joinID);
 	    }
 

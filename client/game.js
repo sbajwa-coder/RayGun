@@ -11,7 +11,7 @@ var config = {
 	physics: {
 		default: 'matter',
 		matter: {
-			debug:false,
+			debug:true,
 			setBounds: {
 				width: 800,
 				height: 600
@@ -21,7 +21,7 @@ var config = {
 			}
 		}
 	},
-	scene: [LobbyScene, TitleScene, GameLobbyScene]//,LobbyScene,GameLobbyScene,testScene]
+	scene: [TitleScene, LobbyScene, GameLobbyScene]//,LobbyScene,GameLobbyScene,testScene]
 };
 
 const game = new Phaser.Game(config);

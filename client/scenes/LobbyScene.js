@@ -25,7 +25,6 @@ class LobbyScene extends Phaser.Scene{
 
 			document.addEventListener("joinGameEvent", function(e) {
 				setTimeout(function() {
-					console.log(self.scene.boot);
 					self.scene.start("GameLobbyScene");
 				}, 0);
 			});
