@@ -1,13 +1,16 @@
 class gameScene extends Phaser.Scene{
 	constructor(test){
 		super({
-			key: 'gameScene'
+			key: 'GameScene'
 		});
 	}
 
-	preload(){}
+	preload(){
+
+	}
 
 	create(){
+		let warrior = this.add.container()
 	}
 }
 
