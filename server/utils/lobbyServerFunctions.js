@@ -1,6 +1,6 @@
-import warrior from '../../client/game-objects/characters/warriorModel.js';
-import player from '../../client/game-objects/player/player.js';
-import gameObject from '../../client/game-objects/game/gameObject.js';
+import warrior from '~/client/game-objects/characters/warriorModel.js';
+import player from '~/client/game-objects/player/player.js';
+import gameObject from '~/client/game-objects/game/gameObject.js';
 import serverMessages from './serverMessages.js';
 
 function lobbyServerFunctions(server){
@@ -52,7 +52,7 @@ function lobbyServerFunctions(server){
   
   this.createGame = function(){
     webserver.gameNumber+=1;
-    webserver.gameList[webserver.gameNumber] = new gameObject(webserver.gameNumber, 6);
+    webserver.gameList[webserver.gameNumber] = new gameObject(webserver.gameNumber, 100);
   }
 
   this.movementUpdate = function(data){//temp

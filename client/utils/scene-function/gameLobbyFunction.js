@@ -1,6 +1,5 @@
-const BACKWARD_SPEED = 0.5;
-const ANGLE_SPEED = 7;
 const IDLE_FRAME = 'tile000.png';
+const BACKGROUND_DEPTH = -1;
 
 function gameLobbyFunction(lobbyScene){
 	let scene = lobbyScene;
@@ -43,6 +42,15 @@ function gameLobbyFunction(lobbyScene){
 		delete scene.playerList[data.joinID];
 	}
 
+	this.makeMoveRequest = function(action){
+		scene.client.send({
+			type:'PLAYER_MOVE',
+			action:action,
+			joinID:scene.joinID, 
+			gameID:scene.gameID
+		})
+	}
+
 	this.movePlayer = function(data){
 		let player = scene.playerList[data.joinID].sprite;
 		let playerStats = scene.playerList[data.joinID].stats;
@@ -52,11 +60,11 @@ function gameLobbyFunction(lobbyScene){
 
 		switch (data.action) {
 			case 'ArrowLeft':
-				player.angle-=ANGLE_SPEED;
+				player.angle-=playerStats.angleSpeed;
 				break;
 
 			case 'ArrowRight':
-				player.angle+=ANGLE_SPEED;
+				player.angle+=playerStats.angleSpeed;
 				break;
 
 			case 'ArrowUp':
@@ -66,8 +74,8 @@ function gameLobbyFunction(lobbyScene){
 				break;
 
 			case 'ArrowDown':
-				player.x += opposite * BACKWARD_SPEED; //0.5 to decrease the speed
-				player.y -= adjacent * BACKWARD_SPEED;
+				player.x += opposite * playerStats.backwardSpeed; //0.5 to decrease the speed
+				player.y -= adjacent * playerStats.backwardSpeed;
 				player.anims.play('warriorBackwardsWalk',true);
 				break;
 
@@ -83,7 +91,7 @@ function gameLobbyFunction(lobbyScene){
 			default:
 				break;
 		}
-		scene.client.send({type:'umove', x:player.x,y:player.y,angle:player.angle, playerID:data.joinID,gameID: 1,rotation:player.rotation}); //need to update server to do this
+		scene.client.send({type:'SERVER_MOVE', x:player.x,y:player.y,angle:player.angle, playerID:data.joinID,gameID: 1,rotation:player.rotation}); //need to update server to do this
 	}
 
 	this.frameHitboxUpdate = function(animation, frame){
@@ -96,6 +104,7 @@ function gameLobbyFunction(lobbyScene){
 	/*World Related*/
 	this.createWorld = function(data){
 		scene.joinID = data.joinID;
+		scene.gameID = data.gameID;
 
 		/*Loop through all players from the serverand add them to user's game*/
 		for (let otherPlayerID in data.players){
@@ -105,7 +114,8 @@ function gameLobbyFunction(lobbyScene){
 		/*Make the map*/
 		let mapData = scene.cache.json.get(data.background+'_objects');
 
-		let bg = scene.matter.add.sprite(0,0,data.background,null,{shape:mapData.template}).setStatic(true).setDepth(-1);
+		let bg = scene.matter.add.sprite(0,0,data.background,
+			null,{shape:mapData.template}).setStatic(true).setDepth(BACKGROUND_DEPTH);
 		bg.setPosition(0 + bg.centerOfMass.x, 0 + bg.centerOfMass.y); //Sets the position to (0,0) 
 
 		scene.cameras.main.setBounds(0,0,bg.width,bg.height);
@@ -121,6 +131,8 @@ function gameLobbyFunction(lobbyScene){
 	}
 
 	this.disconnect = function(){
+		console.log(scene.gameID);
+		/**Do a check on the server side to see if gameID exists**/
 		return {type:"WORLD_DISCONNECT", joinID:scene.joinID, gameID: 1};
 	}
 

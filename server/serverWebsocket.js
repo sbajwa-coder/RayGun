@@ -32,7 +32,7 @@ function ServerWebsocket(){
           self.broadcastToGame(data.gameID, data);
           break;
 
-        case 'umove':
+        case 'SERVER_MOVE':
           lobbyFunction.movementUpdate(data);
           break;
 

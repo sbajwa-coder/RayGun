@@ -18,7 +18,9 @@ function Character(model){
 
 		attackPower: 100,
 		attackSpeed: 5,
-		movementSpeed: 5
+		movementSpeed: 5,
+		angleSpeed: 5,
+		backwardSpeed: 0.5
 	}
 }
 

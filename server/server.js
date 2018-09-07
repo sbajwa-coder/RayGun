@@ -11,6 +11,8 @@ app.use(express.static(path.resolve('./dist')));
 	res.sendFile(path.resolve('./client/src/index.html'));
 });*/
 
+console.log(path.resolve('~'));
+console.log(path.resolve('/'));
 /*Websocket setup*/
 const wss = new websocket.Server({server});
 import socketServer from './serverWebsocket.js';
