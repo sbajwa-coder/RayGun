@@ -21,7 +21,7 @@ var config = {
 			}
 		}
 	},
-	scene: [TitleScene, LobbyScene, GameLobbyScene]//,LobbyScene,GameLobbyScene,testScene]
+	scene: [LobbyScene, TitleScene, GameLobbyScene]//,LobbyScene,GameLobbyScene,testScene]
 };
 
 const game = new Phaser.Game(config);

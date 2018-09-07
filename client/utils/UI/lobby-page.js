@@ -100,7 +100,7 @@ rankCarousel.wireValue();
 // RADIO BUTTON SYSTEM -------
 function RadioButtonSystem(buttons, current=null) {
 	this.buttons = buttons;
-	if (current == null) this.current = buttons[0];
+	if (current == null) this.current = buttons[1];
 	else this.current = current;
 
 	this.wire = function() {
@@ -184,52 +184,121 @@ $("#createCancel").click(function(event) {
 	$(".modal-screen").trigger('click');
 });
 
-function GameMake(gameName, gameMode, capacity, password, minRank, map) {
-	this.gameName = gameName;
-	this.gameMode = gameMode;
-	this.capacity = capacity;
-	this.password = password;
-	this.minRank = minRank;
-	this.map = map;
+const RoomList = function() {
+	this.roomList = [];
+	this.addRoom = function(room) {
+		roomList.push(room);
+	}
+}
 
-	this.createRoomListEntry = function() {
+
+
+var rooms = new RoomList();
+
+const createRoom = ({ gameName, gameMode, 
+					capacity, password,
+					minRank, map, yesPassword }) => ({
+	gameName,
+	gameMode,
+	capacity,
+	password,
+	minRank,
+	map,
+	yesPassword,
+	logInfo() {
 		console.log(this.gameName);
 		console.log(this.gameMode);
 		console.log(this.capacity);
 		console.log(this.password);
 		console.log(this.minRank);
 		console.log(this.map);
+		console.log(this.yesPassword);
+	},
+	checkErrors() {
+		let errorMessages = [];
+		if (this.gameName == "") {
+			errorMessages.push("Game name required!");
+		}
+		if (yesPassword && password == "") {
+			errorMessages.push("Password cannot be empty!");
+		}
 
-		const row = '<div class="room-list-row">' +
-			'<span class="title">Game name ova here!</span>' +
-			'<span class="player-count">9/10</span>' +
-			'<span class="game-mode">FFA</span>' +
-			'<span class="locked">' +
-				'<img class="lock-icon" src="../assets/UI/unlocked-icon.png" alt="unlock">' +
-			'</span>' +
-		'</div>';
+		return errorMessages;
+	},
+	createDOM(callback = function() {}) {
+		const errors = this.checkErrors();
+		if (errors.length > 0) {
+			alert(errors);
+		}
+		let lockImg = "../assets/UI/unlocked-icon.png";
+		let lockClass = "unlocked";
+		let lockClass2 = "";
+		if (this.yesPassword) {
+			lockImg = "../assets/UI/locked-icon.png";
+			lockClass = "locked";
+			lockClass2 = "lock-on";
+		}
+		const row = `<div class="room-list-row">` +
+			`<span class="title">${this.gameName}</span>` +
+			`<span class="player-count">1/${this.capacity}</span>` +
+			`<span class="game-mode">${this.gameMode}</span>` +
+			`<span class="${lockClass}">` +
+				`<img class="lock-icon ${lockClass2}" src="${lockImg}" alt="unlock">` +
+			`</span>` +
+		`</div>`;
 
-		console.log(row);
+		$("#roomList").append(row);
+		callback();
+	}
+});
+
+function premake() {
+	console.log('happening');
+	const roomArgs = {
+		gameName: "Game is here boi",
+		gameMode: "FFA",
+		capacity: Math.ceil(Math.random() * 9) + 1,
+		password: "heehaw",
+		minRank: "Recruit",
+		map: "SHOCKFORT",
+		yesPassword: (Math.random() > 0.5)
 	}
 
-	this.sendGameMake = function() {
-		console.log('sending');
-	}
+	createRoom(roomArgs).createDOM();
+}
+
+for (let i=0; i < 3; i++) {
+	premake();
 }
 
 $("#createConfirm").click(function(event) {
 	/* Act on the event */
 	const gameName = $("#gameName").val();
+	const yesPassword = 
+		$("#yesPassword > img").attr('src') == '../assets/UI/radio-button-on.png';
 	const gameMode = $("#gameModeValue").html();
 	const capacity = $("#capacityValue").html();
 	const password = $("#gamePassword").val();
 	const minRank = $("#rankValue").html();
 	const map = $("#mapSelectionName").html();
 
-	let gameMake = new GameMake(gameName, gameMode, capacity,
-						 password, minRank, map);
+	// let gameMake = new GameMake(gameName, gameMode, capacity,
+	// 					 password, minRank, map, yesPassword);
 
-	gameMake.createRoomListEntry();
+	//gameMake.createRoomListEntry();
+	const roomArgs = {
+		gameName: gameName,
+		gameMode: gameMode,
+		capacity: capacity,
+		password: password,
+		minRank: minRank,
+		map: map,
+		yesPassword: yesPassword
+	}
+	const someGame = createRoom(roomArgs);
+	someGame.createDOM(function() {
+		$(".modal-screen").trigger('click');
+	});
 
 });
 
