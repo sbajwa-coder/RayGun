@@ -108,6 +108,7 @@ gameScene.create = function(){
 
  //    container1.add([container2,right_upperarm,right_shoulder]);
  //    container2.add([right_hand,right_forearm]);
+ 	//console.log(leftleg);
 
  	var self = this;
 	 tweendata = {
@@ -116,7 +117,7 @@ gameScene.create = function(){
         duration: 500,
         yoyo:true,
         ease: "inout",
-        onComplete: function(){self.tweens.add(tweendata2)}
+        onComplete: function(){c4.restart()}
     }
 
       tweendata2 = {
@@ -128,17 +129,84 @@ gameScene.create = function(){
 
        tweendata3 = {
        	targets: [leftleg],
-        angle: ,
+        y: 300-50,
         duration: 500,
         yoyo:true,
         ease: "inout",
-        onComplete: function(){self.tweens.add(tweendata2)}
+        onComplete: function(){c5.restart()}
+       }
+
+       tweendata4 = {
+       	targets: [leftleg],
+        y: 300+20,
+        duration: 500,
+        yoyo:true,
+        ease: "inout"
+       }
+
+        tweendata5 = {
+       	targets: [rightleg],
+        y: 300+20,
+        duration: 500,
+        yoyo:true,
+        ease: "inout",
+        onComplete: function(){c6.restart()}
+       }
+
+       tweendata6 = {
+       	targets: [rightleg],
+        y: 300-50,
+        duration: 500,
+        yoyo:true,
+        ease: "inout"
        }
    
-     this.tweens.add(tweendata);
-     //this.tweens.add(tweendata2);
+  c1 = this.tweens.add(tweendata);
+  c2 = this.tweens.add(tweendata3);
+  c3 = this.tweens.add(tweendata5);
+
+  c4 = this.tweens.add(tweendata2);
+  c5 = this.tweens.add(tweendata4);
+  c6 = this.tweens.add(tweendata6);
+   
+   // this.walk();
+    this.cursor = this.input.keyboard.createCursorKeys();
+
 }
 
+gameScene.update = function(){
+	if (this.cursor.left.isDown)
+{
+   this.walk();
+}else{
+
+	c1.stop(0);
+	c2.stop(0);
+	c3.stop(0);	
+	c4.stop(0);
+	c5.stop(0);
+	c6.stop(0);
+
+}
+}
+
+gameScene.walk = function(){
+	// this.tweens.makeActive(c1)
+	// this.tweens.makeActive(c2)
+	// this.tweens.makeActive(c3)
+	if (!c1.isPlaying() && !c4.isPlaying()){
+		c1.restart();
+	}
+	
+	if (!c2.isPlaying()&& !c5.isPlaying()){
+		c2.restart();
+	}
+	if (!c3.isPlaying()&& !c6.isPlaying()){
+		c3.restart();
+	}
+	
+
+}
 
 
 /*entire body (main group):
