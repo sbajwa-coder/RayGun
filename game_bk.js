@@ -1,5 +1,3 @@
-const DURATION = 2000;
-
 let gameScene = new Phaser.Scene('game');
 
 let config = {
@@ -32,7 +30,6 @@ gameScene.create = function(){
 
 
 	/****Right Side****/
-	this.matter.add.mouseSpring();
 	let rightarm = this.add.container(-65,-7);
 	let rightlowerarm = this.add.container(1,3);
 
@@ -66,15 +63,15 @@ gameScene.create = function(){
 
 
 	/****MIDDLE****/
-
-	let upperbody = this.add.container(0,10);
-	let torso = this.add.image(0,0,'key',"parts_torso.png");
+	let upperbody = this.add.container(400,300);
+	let torso = this.matter.add.sprite(0,0,'key',"parts_torso.png");
 	upperbody.add([torso,leftarm,rightarm]);
+
 	//upperbody.setSize(128,64);
 	// this.matter.add.gameObject(upperbody);
 
 	/****LEFT LEG****/
-	let rightleg = this.add.container(-180,0);
+	let rightleg = this.add.container(220,300);
 	let right_thigh = this.add.image(0,0,'key',"parts_right-thigh.png");
 	let right_shin = this.add.image(0,10,'key',"parts_right-shin.png");
 	let right_foot  = this.add.image(0,30,'key',"parts_right-foot.png");
@@ -82,7 +79,7 @@ gameScene.create = function(){
 	rightleg.add([right_foot,right_shin,right_thigh]).setAngle(15);
 
 	/****LEFT LEG****/
-	let leftleg = this.add.container(-120,0);
+	let leftleg = this.add.container(280,300);
 	let left_thigh = this.add.image(0,0,'key',"parts_left-thigh.png");
 	let left_shin = this.add.image(0,10,'key',"parts_left-shin.png");
 	let left_foot  = this.add.image(0,30,'key',"parts_left-foot.png");
@@ -93,14 +90,16 @@ gameScene.create = function(){
 	lowerbody.add([leftleg,rightleg]);
 
 	/****FINAL****/
-	let warrior = this.add.container(200,100);
-	let head = this.add.image(0,0,'key','parts_head.png');
-	warrior.add([lowerbody,upperbody, head]);
-	warrior.setSize(150, 70);
-	var physicsContainer = this.matter.add.gameObject(warrior, {chamfer: {radius: 30}});
-	console.log(physicsContainer.body);
-	// warrior.setSize(128,64);
-	// this.matter.add.gameObject(warrior);
+	let warrior = this.add.container(100,100);
+	let head = this.add.image(400,280,'key','parts_head.png');
+	warrior.add([lowerbody,upperbody/*,rightarm,leftarm*/, head]);
+
+	console.log(torso.body);
+	// torso.body.x = warrior.upperbody.x;
+	// torso.body.y = warrior.upperbody.y;
+
+	/*warrior.setSize(128,64);
+	this.matter.add.gameObject(warrior);*/
 	//rightarm.add(rightlowerarm);
 
 	// container = this.add.container(100, 100, [torso ]);
@@ -116,11 +115,12 @@ gameScene.create = function(){
  //    container1.add([container2,right_upperarm,right_shoulder]);
  //    container2.add([right_hand,right_forearm]);
  	//console.log(leftleg);
+
  	var self = this;
 	 tweendata = {
         targets: [upperbody],
-        angle: -20,
-        duration: DURATION,
+        angle: 35,
+        duration: 500,
         yoyo:true,
         ease: "inout",
         onComplete: function(){c4.restart()}
@@ -128,121 +128,52 @@ gameScene.create = function(){
 
       tweendata2 = {
         targets: [upperbody],
-        angle: 20,
-        duration: DURATION,
+        angle: -35,
+        duration: 500,
         yoyo:true,
         ease: "inout"}
 
        tweendata3 = {
        	targets: [leftleg],
-        y: 0-50,
-        duration: DURATION,
+        y: 300-50,
+        duration: 500,
         yoyo:true,
         ease: "inout",
-        onComplete: function(){
-        	
-        		c5.restart();
-        
-        }
+        onComplete: function(){c5.restart()}
        }
 
        tweendata4 = {
        	targets: [leftleg],
-        y: +25,
-        x: -140,
-      	angle: 15,
-        duration: DURATION,
+        y: 300+20,
+        duration: 500,
         yoyo:true,
         ease: "inout"
        }
 
         tweendata5 = {
        	targets: [rightleg],
-        y: +25,
-        x: -165,
-        angle: -7,
-        duration: DURATION,
-        ease: "inout",
+        y: 300+20,
+        duration: 500,
         yoyo:true,
-        onStart: function(){
-        	self.tweens.add(tweenShin);
-        },	
-        onComplete: function(){/*self.tweens.add(tweendata6);self.tweens.add(tweenpull);*/c6.play()}
+        ease: "inout",
+        onComplete: function(){c6.restart()}
        }
-       
-       tweenShin = {
-       	targets: [right_shin],
-       	y: +20,
-       	duration: DURATION,
-       	ease: "inout",
-       	yoyo:true,
-       	onStart: function(){
-       		self.tweens.add(tweenFoot);
-       	}
-       }
-
-       tweenFoot = {
-       	targets: [right_foot],
-       	y: +40,
-       	angle: -7,
-       	duration: DURATION,
-       	yoyo:true,
-       	ease: "inout"
-       }
-
-       // tweenpull = {
-       // 		targets: [rightleg],
-       // 	y: -20,
-       // 	duration: DURATION,
-       // 	ease: "inout",
-       // 	yoyo: true,
-       // 	onYoyo: function(){
-       // 		c6.play();
-       // 	}
-       // }
 
        tweendata6 = {
        	targets: [rightleg],
-        y: -50,
-        duration: DURATION,
+        y: 300-50,
+        duration: 500,
         yoyo:true,
-        ease: "inout",
-        onStart: function(){
-        	right_thigh.flipY = true;
-        	right_shin.flipY = true;
-        	right_foot.flipY = true;
-        	right_shin.y -= 20;
-        	right_foot.y -= 40;
-        },
-        onComplete: function(){
-        	right_thigh.flipY = false;
-        	right_shin.flipY = false;
-        	right_foot.flipY = false;
-        	right_shin.y += 20;
-        	right_foot.y += 40;
-        }
+        ease: "inout"
        }
-
-       // tweenThigh = {
-       // 	targets: [right_thigh],
-       // 	flipY: true,
-       //  y: -30,
-       //  duration: DURATION,
-       // 	yoyo:true,
-       // 	onComplete: function(){
-       // 		right_thigh.flipY =false;
-       // 	},
-       //  ease: "inout"
-       // }
-
    
   c1 = this.tweens.add(tweendata);
   c2 = this.tweens.add(tweendata3);
-  c3 = this.tweens.create(tweendata5);
+  c3 = this.tweens.add(tweendata5);
 
   c4 = this.tweens.add(tweendata2);
   c5 = this.tweens.add(tweendata4);
-  c6 = this.tweens.create(tweendata6);
+  c6 = this.tweens.add(tweendata6);
    
    // this.walk();
     this.cursor = this.input.keyboard.createCursorKeys();
@@ -257,10 +188,10 @@ gameScene.update = function(){
 
 	c1.stop(0);
 	c2.stop(0);
-	//c3.stop(0);	
+	c3.stop(0);	
 	c4.stop(0);
 	c5.stop(0);
-	//c6.stop(0);
+	c6.stop(0);
 
 }
 }
@@ -269,17 +200,15 @@ gameScene.walk = function(){
 	// this.tweens.makeActive(c1)
 	// this.tweens.makeActive(c2)
 	// this.tweens.makeActive(c3)
-	// if (!c1.isPlaying() && !c4.isPlaying()){
-	// 	c1.restart();
-	// }
+	if (!c1.isPlaying() && !c4.isPlaying()){
+		c1.restart();
+	}
 	
-	// if (!c2.isPlaying()&& !c5.isPlaying()){
-	// 	c2.restart();
-	// }
+	if (!c2.isPlaying()&& !c5.isPlaying()){
+		c2.restart();
+	}
 	if (!c3.isPlaying()&& !c6.isPlaying()){
-		
-			c3.play();
-	
+		c3.restart();
 	}
 	
 
