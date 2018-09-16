@@ -7,10 +7,12 @@ class Upperbody extends Phaser.GameObjects.Container {
 
 		let torso = scene.add.image(config.TORSO.x,
 			config.TORSO.y, config.KEY, config.TORSO.sprite);
+		
+		let rightarm = new upperarm(scene, config.RIGHT_ARM.x, 
+			config.RIGHT_ARM.y, 'right');
 
-		let rightarm = new upperarm(scene, config, 'RIGHT');
-
-		let leftarm = new upperarm(scene, config, 'LEFT');
+		let leftarm = new upperarm(scene, config.LEFT_ARM.x,
+			config.LEFT_ARM.y, 'left');
 
 		this.add([torso,rightarm,leftarm]);
 	}

@@ -1,0 +1,24 @@
+{
+  "Fullbody": {
+    "head": {"x":80, "y":0},
+    "upper": {"x":0, "y":25},
+    "lower": {"x":50, "y":55}
+  },
+  "Upperbody": {
+    "torso": {"x":78, "y":7},
+    "rightarm": {"x":0, "y":0},
+    "leftarm": {"x":135, "y":0}
+  },
+  "Lowerbody": {
+    "rightleg": {"x":0, "y":0},
+    "leftleg": {"x":60, "y":0}
+  },
+  "Upperarm": {
+    "shoulder": {"x":13, "y":0},
+    "biscep": {"x":23, "y":10}
+  },
+  "Lowerarm": {
+    "forearm": {"x":0, "y":0},
+    "hand": {"x":3, "y":30}
+  }
+}

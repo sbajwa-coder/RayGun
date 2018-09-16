@@ -104,10 +104,10 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   // Override the current require with this new one
   return newRequire;
 })({"parts\\lowerarm.js":[function(require,module,exports) {
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-		value: true
+	value: true
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -117,60 +117,43 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Lowerarm = function (_Phaser$GameObjects$C) {
-		_inherits(Lowerarm, _Phaser$GameObjects$C);
+	_inherits(Lowerarm, _Phaser$GameObjects$C);
 
-		function Lowerarm(scene, x, y, type) {
-				_classCallCheck(this, Lowerarm);
+	function Lowerarm(scene, config, type) {
+		_classCallCheck(this, Lowerarm);
 
-				//Default right
-				var _this = _possibleConstructorReturn(this, (Lowerarm.__proto__ || Object.getPrototypeOf(Lowerarm)).call(this, scene, x, y));
+		var _this = _possibleConstructorReturn(this, (Lowerarm.__proto__ || Object.getPrototypeOf(Lowerarm)).call(this, scene, config[type + "_LOWERARM"].x, config[type + "_LOWERARM"].y));
 
-				var direction = 1;
-				if (type === 'left') {
-						direction = -1;
-				}
+		var right_forearm = scene.add.image(config[type + "_FOREARM"].x, config[type + "_FOREARM"].y, config.KEY, config[type + "_FOREARM"].sprite);
+		right_forearm.setOrigin(0.5, 0);
 
-				// let right_forearm  = scene.add.image(-13,40,'key',"parts_right-forearm.png").setOrigin(0.5,0.5);
-				// let right_hand     = scene.add.image(-10,50,'key',"parts_right-hand.png").setOrigin(0.5,0);
+		var right_hand = scene.add.image(config[type + "_HAND"].x, config[type + "_HAND"].y, config.KEY, config[type + "_HAND"].sprite);
+		right_hand.setOrigin(0.5, 0);
 
-				// let right_forearm  = scene.add.image(15,20,'key',"parts_right-forearm.png").setOrigin(0.5,0.5);
-				// let right_hand     = scene.add.image(18,30,'key',"parts_right-hand.png").setOrigin(0.5,0);
+		var right_weapon = scene.add.image(config[type + "_WEAPON"].x, config[type + "_WEAPON"].y, config.KEY, config[type + "_WEAPON"].sprite);
+		right_weapon.setAngle(config[type + "_WEAPON"].angle);
 
-				var right_forearm = scene.add.image(0, 0, 'key', "parts_right-forearm.png").setOrigin(0.5, 0);
-				var right_hand = scene.add.image(3, 30, 'key', "parts_right-hand.png").setOrigin(0.5, 0);
+		_this.add([right_weapon, right_hand, right_forearm]);
 
-				//forearm 0,0
-				//hand 3,10
-				if (direction === -1) {
-						right_forearm.flipX = true;
-						right_hand.flipX = true;
-
-						right_forearm.x = 18;
-						right_hand.x = 15;
-				}
-
-				_this.add([right_hand, right_forearm]);
-				return _this;
+		/*Needed to bring the shield to the top*/
+		if (config[type + "_WEAPON"].bringToTop) {
+			_this.bringToTop(right_weapon);
 		}
+		return _this;
+	}
 
-		return Lowerarm;
+	return Lowerarm;
 }(Phaser.GameObjects.Container);
 
 exports.default = Lowerarm;
-
-/***
-	let right_forearm  = this.add.image(-13,40,'key',"parts_right-forearm.png").setOrigin(0.5,0.5);
-	let right_hand     = this.add.image(-10,50,'key',"parts_right-hand.png").setOrigin(0.5,0);
-	let sword 		   = this.add.image(10,112,'key',"parts_sword.png").setAngle(-20);
-***/
 },{}],"parts\\upperarm.js":[function(require,module,exports) {
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _lowerarm = require('./lowerarm.js');
+var _lowerarm = require("./lowerarm.js");
 
 var _lowerarm2 = _interopRequireDefault(_lowerarm);
 
@@ -185,32 +168,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Upperarm = function (_Phaser$GameObjects$C) {
 	_inherits(Upperarm, _Phaser$GameObjects$C);
 
-	function Upperarm(scene, x, y, type) {
+	function Upperarm(scene, config, type) {
 		_classCallCheck(this, Upperarm);
 
-		//Default right
-		var _this = _possibleConstructorReturn(this, (Upperarm.__proto__ || Object.getPrototypeOf(Upperarm)).call(this, scene, x, y));
+		var _this = _possibleConstructorReturn(this, (Upperarm.__proto__ || Object.getPrototypeOf(Upperarm)).call(this, scene, config[type + "_ARM"].x, config[type + "_ARM"].y));
 
-		var direction = 1;
-		if (type === 'left') {
-			direction = -1;
-		}
+		var right_shoulder = scene.add.image(config[type + "_SHOULDER"].x, config[type + "_SHOULDER"].y, config.KEY, config[type + "_SHOULDER"].sprite);
+		right_shoulder.setOrigin(0.5, 0.5);
 
-		// let right_shoulder = this.add.image(0,0,'key',"parts_right-shoulder.png");
-		// let right_upperarm = this.add.image(10,10,'key',"parts_right-upperarm.png").setOrigin(1,0).setAngle(20);
+		var right_upperarm = scene.add.image(config[type + "_BISCEP"].x, config[type + "_BISCEP"].y, config.KEY, config[type + "_BISCEP"].sprite);
+		right_upperarm.setOrigin(1, 0).setAngle(config[type + "_BISCEP"].angle);
 
-		var right_shoulder = scene.add.image(13, 0, 'key', "parts_right-shoulder.png").setOrigin(0.5, 0.5);
-		var right_upperarm = scene.add.image(23, 10, 'key', "parts_right-upperarm.png").setOrigin(1, 0).setAngle(20 * direction);
-		//arm -13,41
-		var arm = new _lowerarm2.default(scene, 0, 21, type);
-
-		if (direction === -1) {
-			right_shoulder.flipX = true;
-			right_upperarm.y = 5;
-		}
-		//arm = -13,41
-		//shoulder = 0,0
-		//upperarm = 10,10
+		var arm = new _lowerarm2.default(scene, config, type);
 
 		_this.add([arm, right_upperarm, right_shoulder]);
 		return _this;
@@ -220,11 +189,6 @@ var Upperarm = function (_Phaser$GameObjects$C) {
 }(Phaser.GameObjects.Container);
 
 exports.default = Upperarm;
-
-/***
-	let right_shoulder = this.add.image(0,0,'key',"parts_right-shoulder.png");
-	let right_upperarm = this.add.image(10,10,'key',"parts_right-upperarm.png").setOrigin(1,0).setAngle(20);
-***/
 },{"./lowerarm.js":"parts\\lowerarm.js"}],"parts\\upperbody.js":[function(require,module,exports) {
 'use strict';
 
@@ -247,25 +211,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Upperbody = function (_Phaser$GameObjects$C) {
 		_inherits(Upperbody, _Phaser$GameObjects$C);
 
-		function Upperbody(scene, x, y) {
+		function Upperbody(scene, config) {
 				_classCallCheck(this, Upperbody);
 
-				// let torso = this.add.image(0,0,'key',"parts_torso.png");
-				//torso = 65,7
+				var _this = _possibleConstructorReturn(this, (Upperbody.__proto__ || Object.getPrototypeOf(Upperbody)).call(this, scene, config.UPPER_BODY.x, config.UPPER_BODY.y));
 
-				//let leftarm = this.add.container(70, -7);
-				// left = 70, -7
+				var torso = scene.add.image(config.TORSO.x, config.TORSO.y, config.KEY, config.TORSO.sprite);
 
-				//let rightarm = this.add.container(-65,-7);
-				//right = -65,-7
+				var rightarm = new _upperarm2.default(scene, config, 'RIGHT');
 
-				//+13 for upperbody
-				//65+70 = 135 for left
-				var _this = _possibleConstructorReturn(this, (Upperbody.__proto__ || Object.getPrototypeOf(Upperbody)).call(this, scene, x, y));
-
-				var torso = scene.add.image(78, 7, 'key', "parts_torso.png");
-				var rightarm = new _upperarm2.default(scene, 0, 0, 'right');
-				var leftarm = new _upperarm2.default(scene, 135, 0, 'left');
+				var leftarm = new _upperarm2.default(scene, config, 'LEFT');
 
 				_this.add([torso, rightarm, leftarm]);
 				return _this;
@@ -275,16 +230,8 @@ var Upperbody = function (_Phaser$GameObjects$C) {
 }(Phaser.GameObjects.Container);
 
 exports.default = Upperbody;
-
-/***
-	let torso = this.add.image(0,0,'key',"parts_torso.png");
-
-
-	let rightarm = this.add.container(-65,-7);
-	let leftarm = this.add.container(70, -7);
-***/
 },{"./upperarm.js":"parts\\upperarm.js"}],"parts\\leg.js":[function(require,module,exports) {
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -299,27 +246,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Leg = function (_Phaser$GameObjects$C) {
 	_inherits(Leg, _Phaser$GameObjects$C);
 
-	function Leg(scene, x, y, type) {
+	function Leg(scene, config, type) {
 		_classCallCheck(this, Leg);
 
-		//Default right
-		var _this = _possibleConstructorReturn(this, (Leg.__proto__ || Object.getPrototypeOf(Leg)).call(this, scene, x, y));
+		var _this = _possibleConstructorReturn(this, (Leg.__proto__ || Object.getPrototypeOf(Leg)).call(this, scene, config[type + "_LEG"].x, config[type + "_LEG"].y));
 
-		var direction = 1;
-		if (type === 'left') {
-			direction = -1;
-		}
-		// let rightleg = this.add.container(-180,0);
-		// let right_thigh = this.add.image(0,0,'key',"parts_right-thigh.png");
-		// let right_shin = this.add.image(0,10,'key',"parts_right-shin.png");
-		// let right_foot  = this.add.image(0,30,'key',"parts_right-foot.png");
+		var right_thigh = scene.add.image(config[type + "_THIGH"].x, config[type + "_THIGH"].y, config.KEY, config[type + "_THIGH"].sprite);
 
-		//-165(right shoulder) - 180
-		var right_thigh = scene.add.image(0, 0, 'key', "parts_right-thigh.png");
-		var right_shin = scene.add.image(0, 10, 'key', "parts_right-shin.png");
-		var right_foot = scene.add.image(0, 30, 'key', "parts_right-foot.png");
+		var right_shin = scene.add.image(config[type + "_SHIN"].x, config[type + "_SHIN"].y, config.KEY, config[type + "_SHIN"].sprite);
 
-		_this.add([right_foot, right_shin, right_thigh]).setAngle(15 * direction);
+		var right_foot = scene.add.image(config[type + "_FOOT"].x, config[type + "_FOOT"].y, config.KEY, config[type + "_FOOT"].sprite);
+
+		_this.add([right_foot, right_shin, right_thigh]).setAngle(config[type + "_LEG"].angle);
 		return _this;
 	}
 
@@ -327,19 +265,11 @@ var Leg = function (_Phaser$GameObjects$C) {
 }(Phaser.GameObjects.Container);
 
 exports.default = Leg;
-
-/***
-	let rightleg = this.add.container(-180,0);
-	let right_thigh = this.add.image(0,0,'key',"parts_right-thigh.png");
-	let right_shin = this.add.image(0,10,'key',"parts_right-shin.png");
-	let right_foot  = this.add.image(0,30,'key',"parts_right-foot.png");
-
-***/
 },{}],"parts\\lowerbody.js":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-		value: true
+	value: true
 });
 
 var _leg = require('./leg.js');
@@ -355,39 +285,24 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Lowerbody = function (_Phaser$GameObjects$C) {
-		_inherits(Lowerbody, _Phaser$GameObjects$C);
+	_inherits(Lowerbody, _Phaser$GameObjects$C);
 
-		function Lowerbody(scene, x, y) {
-				_classCallCheck(this, Lowerbody);
+	function Lowerbody(scene, config) {
+		_classCallCheck(this, Lowerbody);
 
-				//let lowerbody = this.add.container(150,20);
-				//let leftleg = this.add.container(-120,0);
-				//let rightleg = this.add.container(-180,0);
+		var _this = _possibleConstructorReturn(this, (Lowerbody.__proto__ || Object.getPrototypeOf(Lowerbody)).call(this, scene, config.LOWER_BODY.x, config.LOWER_BODY.y));
 
-				//left = -120,0
-				//right = -180,0
+		var leftleg = new _leg2.default(scene, config, 'LEFT');
+		var rightleg = new _leg2.default(scene, config, 'RIGHT');
 
-				var _this = _possibleConstructorReturn(this, (Lowerbody.__proto__ || Object.getPrototypeOf(Lowerbody)).call(this, scene, x, y));
+		_this.add([rightleg, leftleg]);
+		return _this;
+	}
 
-				var leftleg = new _leg2.default(scene, 60, 0, 'left');
-				var rightleg = new _leg2.default(scene, 0, 0, 'right');
-
-				_this.add([rightleg, leftleg]);
-				return _this;
-		}
-
-		return Lowerbody;
+	return Lowerbody;
 }(Phaser.GameObjects.Container);
 
 exports.default = Lowerbody;
-
-/***
-	let rightleg = this.add.container(-180,0);
-	let right_thigh = this.add.image(0,0,'key',"parts_right-thigh.png");
-	let right_shin = this.add.image(0,10,'key',"parts_right-shin.png");
-	let right_foot  = this.add.image(0,30,'key',"parts_right-foot.png");
-
-***/
 },{"./leg.js":"parts\\leg.js"}],"parts\\fullbody.js":[function(require,module,exports) {
 'use strict';
 
@@ -421,11 +336,11 @@ var Fullbody = function (_Phaser$GameObjects$C) {
 
 		var config = scene.cache.json.get('partsConfig');
 
-		var head = scene.add.image(config.Fullbody.head.x, config.Fullbody.head.y, 'key', 'parts_head.png');
+		var head = scene.add.image(config.HEAD.x, config.HEAD.y, config.KEY, config.HEAD.sprite);
 
-		var upper = new _upperbody2.default(scene, config.Fullbody.upper.x, config.Fullbody.upper.y);
+		var upper = new _upperbody2.default(scene, config);
 
-		var lower = new _lowerbody2.default(scene, config.Fullbody.lower.x, config.Fullbody.lower.y);
+		var lower = new _lowerbody2.default(scene, config);
 
 		_this.add([lower, upper, head]);
 		return _this;
@@ -437,9 +352,14 @@ var Fullbody = function (_Phaser$GameObjects$C) {
 exports.default = Fullbody;
 
 /***
-	let head = this.add.image(0,0,'key','parts_head.png');
+	let head = scene.add.image(config.Fullbody.head.x,
+		config.Fullbody.head.y,'key','parts_head.png');
 
-		let rightleg = this.add.container(15,0);
+	let upper = new upperbody(scene,config.Fullbody.upper.x,
+		config.Fullbody.upper.y);
+
+	let lower = new lowerbody(scene,config.Fullbody.lower.x,
+		config.Fullbody.lower.y);
 ***/
 },{"./upperbody.js":"parts\\upperbody.js","./lowerbody.js":"parts\\lowerbody.js"}],"game.js":[function(require,module,exports) {
 'use strict';
@@ -515,7 +435,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '53965' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '53949' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

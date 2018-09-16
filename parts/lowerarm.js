@@ -1,42 +1,27 @@
 class Lowerarm extends Phaser.GameObjects.Container {
 
-	constructor (scene, x, y,type){
-		super(scene,x,y);
-		//Default right
-		let direction = 1;
-		if (type==='left'){
-			direction = -1;
+	constructor (scene, config, type){
+		super(scene, config[type+"_LOWERARM"].x, config[type+"_LOWERARM"].y);
+
+		let right_forearm  = scene.add.image(config[type+"_FOREARM"].x, 
+			config[type+"_FOREARM"].y, config.KEY, config[type+"_FOREARM"].sprite);
+		right_forearm.setOrigin(0.5,0);
+
+		let right_hand     = scene.add.image(config[type+"_HAND"].x, 
+			config[type+"_HAND"].y, config.KEY, config[type+"_HAND"].sprite)
+		right_hand.setOrigin(0.5,0);
+
+		let right_weapon     = scene.add.image(config[type+"_WEAPON"].x, 
+			config[type+"_WEAPON"].y, config.KEY, config[type+"_WEAPON"].sprite)
+		right_weapon.setAngle(config[type+"_WEAPON"].angle);
+
+		this.add([right_weapon,right_hand,right_forearm]);
+
+		/*Needed to bring the shield to the top*/
+		if(config[type+"_WEAPON"].bringToTop){
+			this.bringToTop(right_weapon);
 		}
-
-		// let right_forearm  = scene.add.image(-13,40,'key',"parts_right-forearm.png").setOrigin(0.5,0.5);
-		// let right_hand     = scene.add.image(-10,50,'key',"parts_right-hand.png").setOrigin(0.5,0);
-
-		// let right_forearm  = scene.add.image(15,20,'key',"parts_right-forearm.png").setOrigin(0.5,0.5);
-		// let right_hand     = scene.add.image(18,30,'key',"parts_right-hand.png").setOrigin(0.5,0);
-
-		let right_forearm  = scene.add.image(0,0,'key',"parts_right-forearm.png").setOrigin(0.5,0);
-		let right_hand     = scene.add.image(3,30,'key',"parts_right-hand.png").setOrigin(0.5,0);
-
-		//forearm 0,0
-		//hand 3,10
-		if (direction === -1){
-			right_forearm.flipX = true;
-			right_hand.flipX = true;
-
-			right_forearm.x = 18;
-			right_hand.x = 15;
-
-		}
-
-		this.add([right_hand,right_forearm]);
 	}
 }
 
 export default Lowerarm;
-
-
-/***
-	let right_forearm  = this.add.image(-13,40,'key',"parts_right-forearm.png").setOrigin(0.5,0.5);
-	let right_hand     = this.add.image(-10,50,'key',"parts_right-hand.png").setOrigin(0.5,0);
-	let sword 		   = this.add.image(10,112,'key',"parts_sword.png").setAngle(-20);
-***/

@@ -2,39 +2,22 @@ import lowerarm from './lowerarm.js'
 
 class Upperarm extends Phaser.GameObjects.Container {
 
-	constructor (scene, x, y, type){
-		super(scene,x,y);
+	constructor (scene, config, type){
 
-		//Default right
-		let direction = 1;
-		if (type==='left'){
-			direction = -1;
-		}
+		super(scene,config[type+"_ARM"].x, config[type+"_ARM"].y);
 
-		// let right_shoulder = this.add.image(0,0,'key',"parts_right-shoulder.png");
-		// let right_upperarm = this.add.image(10,10,'key',"parts_right-upperarm.png").setOrigin(1,0).setAngle(20);
+		let right_shoulder = scene.add.image(config[type+"_SHOULDER"].x, 
+			config[type+"_SHOULDER"].y, config.KEY, config[type+"_SHOULDER"].sprite);
+		right_shoulder.setOrigin(0.5,0.5);
 
-		let right_shoulder = scene.add.image(13,0,'key',"parts_right-shoulder.png").setOrigin(0.5,0.5);
-		let right_upperarm = scene.add.image(23,10,'key',"parts_right-upperarm.png").setOrigin(1,0).setAngle(20*direction);
-		//arm -13,41
-		let arm = new lowerarm(scene,0,21,type);
-
-		if (direction === -1){
-			right_shoulder.flipX = true;
-			right_upperarm.y = 5;
-		}
-		//arm = -13,41
-		//shoulder = 0,0
-		//upperarm = 10,10
+		let right_upperarm = scene.add.image(config[type+"_BISCEP"].x, 
+			config[type+"_BISCEP"].y, config.KEY, config[type+"_BISCEP"].sprite)
+		right_upperarm.setOrigin(1,0).setAngle(config[type+"_BISCEP"].angle);
+		
+		let arm = new lowerarm(scene, config, type);
 
 		this.add([arm,right_upperarm,right_shoulder]);
 	}
 }
 
 export default Upperarm;
-
-
-/***
-	let right_shoulder = this.add.image(0,0,'key',"parts_right-shoulder.png");
-	let right_upperarm = this.add.image(10,10,'key',"parts_right-upperarm.png").setOrigin(1,0).setAngle(20);
-***/

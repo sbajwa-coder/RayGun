@@ -1,0 +1,50 @@
+{
+  "KEY": "key",
+
+  "HEAD": {"x":80, "y":0, "sprite":"parts_head.png"},
+
+  "UPPER_BODY": {"x":0, "y":25},
+  "TORSO": {"x":78, "y":7},
+
+  "RIGHT_ARM": {"x":0, "y":0},
+  "RIGHT_SHOULDER": {"x":13, "y":0},
+  "RIGHT_BISCEP": {"x":23, "y":10},
+  "RIGHT_FOREARM": {"x":0, "y":0},
+  "RIGHT_HAND": {"x":3, "y":30},
+
+  "LEFT_ARM": {"x":135, "y":0},
+  "LEFT_SHOULDER": {"x":13, "y":0},
+  "LEFT_BISCEP": {"x":23, "y":10},
+  "LEFT_FOREARM": {"x":0, "y":0},
+  "LEFT_HAND": {"x":3, "y":30},
+
+  "LOWER_BODY": {"x":50, "y":55},
+  "RIGHT_LEG": {"x":0, "y":0},
+
+  "LEFT_LEG": {"x":60, "y":0}
+}
+{
+  "KEY": "key",
+
+  "HEAD": {"x":80, "y":0, "sprite":"parts_head.png"},
+
+  "UPPER_BODY": {"x":0, "y":25},
+  "TORSO": {"x":78, "y":7},
+
+  "RIGHT_ARM": {"x":0, "y":0},
+  "RIGHT_SHOULDER": {"x":13, "y":0},
+  "RIGHT_BISCEP": {"x":23, "y":10},
+  "RIGHT_FOREARM": {"x":0, "y":0},
+  "RIGHT_HAND": {"x":3, "y":30},
+
+  "LEFT_ARM": {"x":135, "y":0},
+  "LEFT_SHOULDER": {"x":13, "y":0},
+  "LEFT_BISCEP": {"x":23, "y":10},
+  "LEFT_FOREARM": {"x":0, "y":0},
+  "LEFT_HAND": {"x":3, "y":30},
+
+  "LOWER_BODY": {"x":50, "y":55},
+  "RIGHT_LEG": {"x":0, "y":0},
+
+  "LEFT_LEG": {"x":60, "y":0}
+}

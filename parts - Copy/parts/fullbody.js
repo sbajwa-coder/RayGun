@@ -10,9 +10,11 @@ class Fullbody extends Phaser.GameObjects.Container {
 		let head = scene.add.image(config.HEAD.x,
 			config.HEAD.y, config.KEY, config.HEAD.sprite);
 
-		let upper = new upperbody(scene, config);
+		let upper = new upperbody(scene, config, config.UPPER_BODY.x,
+			config.UPPER_BODY.y);
 
-		let lower = new lowerbody(scene, config);
+		let lower = new lowerbody(scene, config.LOWER_BODY.x,
+			config.LOWER_BODY.y);
 
 		this.add([lower,upper, head]);
 	}
