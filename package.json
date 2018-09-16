@@ -1,0 +1,24 @@
+{
+  "name": "projectraygun",
+  "version": "1.0.0",
+  "description": "",
+  "main": "game.js",
+  "dependencies": {
+    "parcel-bundler": "^1.9.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "exe": "node node_modules/parcel-bundler/bin/cli.js",
+    "parcel" : "npm run exe index.html --public-url ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Boolioos:shovelswrath02@github.com/Shaneious/projectraygun.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shaneious/projectraygun/issues"
+  },
+  "homepage": "https://github.com/Shaneious/projectraygun#readme"
+}
